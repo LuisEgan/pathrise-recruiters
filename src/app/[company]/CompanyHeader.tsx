@@ -43,7 +43,7 @@ const CompanyHeader = (props: CompanyHeader) => {
               Company recruiters
             </h1>
             <h2 className="mb-10 text-sm md:mb-5 xl:text-xl 2xl:text-3xl 2xl:mb-16">
-              Learn the best way we've found to get hired by {companyName}
+              Learn the best way we&apos;ve found to get hired by {companyName}
             </h2>
 
             {/* +MD ONLY */}

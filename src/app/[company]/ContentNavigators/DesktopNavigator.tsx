@@ -41,49 +41,52 @@ const DesktopNavigator = (props: ContentNavigator) => {
   const onFix = useMemo(() => () => setIsFixed(true), []);
   const onUnfix = useMemo(() => () => setIsFixed(false), []);
 
-  const setAnimTimeline = () => {
-    if (!show) return;
+  const setAnimTimeline = useMemo(
+    () => () => {
+      if (!show) return;
 
-    timeline.current = gsap.timeline({ paused: true });
-    timeline.current
-      .to(containerRef.current, {
-        backgroundColor: "rgb(31 41 55)",
-        color: "white",
-      })
-      .addLabel("containerBgChange")
-      .to(
-        bottomBgRef.current,
-        {
+      timeline.current = gsap.timeline({ paused: true });
+      timeline.current
+        .to(containerRef.current, {
+          backgroundColor: "rgb(31 41 55)",
+          color: "white",
+        })
+        .addLabel("containerBgChange")
+        .to(
+          bottomBgRef.current,
+          {
+            ...BASE_ANIM,
+            backgroundColor: "#FF4500",
+            skewX: -20,
+            x: "-43%",
+          },
+          "<"
+        )
+        .addLabel("companyContainerSkew")
+        .to(logoRef.current, {
           ...BASE_ANIM,
-          backgroundColor: "#FF4500",
-          skewX: -20,
-          x: "-43%",
-        },
-        "<"
-      )
-      .addLabel("companyContainerSkew")
-      .to(logoRef.current, {
-        ...BASE_ANIM,
-        left: "75%",
-      })
-      .addLabel("logoMove")
-      .fromTo(
-        [pRef.current, companyLogoRef.current],
-        BASE_FADE_IN_ANIM.from,
-        BASE_FADE_IN_ANIM.to,
-        "<"
-      )
-      .addLabel("namesFadeIn")
-      .fromTo(
-        [shareRef.current, igRef.current, linkedinRef.current],
-        BASE_FADE_IN_ANIM.from,
-        {
-          ...BASE_FADE_IN_ANIM.to,
-          stagger: 0.1,
-        }
-      )
-      .addLabel("socialsFadeIn");
-  };
+          left: "75%",
+        })
+        .addLabel("logoMove")
+        .fromTo(
+          [pRef.current, companyLogoRef.current],
+          BASE_FADE_IN_ANIM.from,
+          BASE_FADE_IN_ANIM.to,
+          "<"
+        )
+        .addLabel("namesFadeIn")
+        .fromTo(
+          [shareRef.current, igRef.current, linkedinRef.current],
+          BASE_FADE_IN_ANIM.from,
+          {
+            ...BASE_FADE_IN_ANIM.to,
+            stagger: 0.1,
+          }
+        )
+        .addLabel("socialsFadeIn");
+    },
+    []
+  );
 
   useEffect(() => {
     setShow(!isMobile);

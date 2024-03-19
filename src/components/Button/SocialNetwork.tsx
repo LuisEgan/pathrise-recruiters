@@ -35,4 +35,6 @@ const SocialNetwork = forwardRef<HTMLAnchorElement, SocialNetworkButton>(
   }
 );
 
+SocialNetwork.displayName = "SocialNetwork";
+
 export default SocialNetwork;

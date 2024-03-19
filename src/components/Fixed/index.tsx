@@ -155,4 +155,6 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   );
 });
 
+Fixed.displayName = "Fixed";
+
 export default Fixed;

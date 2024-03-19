@@ -155,4 +155,6 @@ const ToggablePanel = forwardRef<ToggablePanelRef, ToggablePanelProps>(
   }
 );
 
+ToggablePanel.displayName = "ToggablePanel";
+
 export default ToggablePanel;

@@ -96,7 +96,7 @@ export default function Home() {
               Erica Holloway is a recruiter with close to a decade of talent
               acquisition experience in the ed-tech and startup space. <br />
               <br />
-              She currently leads Pathrise's recruiting efforts, touching on
+              She currently leads Pathrise&apos;s recruiting efforts, touching on
               roles in career coaching, operations, engineering, sales,
               marketing and more. She resides in the San Francisco Bay Area.
             </p>
