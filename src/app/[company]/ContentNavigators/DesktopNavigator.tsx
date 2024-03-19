@@ -85,7 +85,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
         )
         .addLabel("socialsFadeIn");
     },
-    []
+    [show]
   );
 
   useEffect(() => {
