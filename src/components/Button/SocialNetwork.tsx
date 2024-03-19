@@ -12,7 +12,7 @@ const SocialNetwork = forwardRef<HTMLAnchorElement, SocialNetworkButton>(
   (props, ref) => {
     const {
       network,
-      sizeClassNames = "w-6 lg:w-7 2xl:w-12",
+      sizeClassNames = "w-6 lg:w-7",
       className,
     } = props;
 

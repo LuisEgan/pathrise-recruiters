@@ -15,7 +15,7 @@ const AnchorsList = (props: AnchorsList) => {
       {COMPANY_SECTIONS.map((section, index) => (
         <span
           key={index}
-          className="mb-3 2xl:mb-7"
+          className="mb-3"
           id={`${index}`}
         >
           {index + 1}.{" "}
@@ -26,14 +26,14 @@ const AnchorsList = (props: AnchorsList) => {
       {fullList ? (
         <>
           {COMPANY_SECTIONS.map((section, index) => (
-            <span key={index} className="mb-3 2xl:mb-7">
+            <span key={index} className="mb-3">
               {index + 1}.{" "}
               {typeof section === "function" ? section("reddit") : section}
             </span>
           ))}
         </>
       ) : (
-        <span className="text-xxs 2xl:text-xl">+ 5 more</span>
+        <span className="text-xs">+ 5 more</span>
       )}
     </div>
   );

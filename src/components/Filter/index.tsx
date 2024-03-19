@@ -57,7 +57,7 @@ const Filter = (props: Filter) => {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-2 flex-1 overflow-y-auto 2xl:gap-4 2xl:grid-cols-4">
+      <div className="grid grid-cols-3 gap-2 flex-1 overflow-y-auto">
         {
           // Replace the following with a list of company cards
           // make a dummy array of 100

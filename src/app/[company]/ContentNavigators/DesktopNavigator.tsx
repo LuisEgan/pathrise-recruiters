@@ -2,6 +2,9 @@
 
 import SocialNetwork from "@/components/Button/SocialNetwork";
 import Fixed from "@/components/Fixed";
+import LoadingSkeleton from "@/components/Loading/Skeleton";
+import { BASE_ANIM, BASE_FADE_IN_ANIM } from "@/utils/constants";
+import useWindowSize from "@/utils/hooks/useWindowSize";
 import { capitalizeOnlyFirstLetter } from "@/utils/strings";
 import LogoIcon from "@svg/pathrise-logo.svg";
 import LogoPIcon from "@svg/pathrise-p.svg";
@@ -9,12 +12,8 @@ import RocketshipIcon from "@svg/rocketship.svg";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COMPANY_SECTIONS } from "../contants";
-import { ContentNavigator } from "./types";
-import useWindowSize from "@/utils/hooks/useWindowSize";
-import LoadingSkeleton from "@/components/Loading/Skeleton";
-import { BASE_ANIM, BASE_FADE_IN_ANIM } from "@/utils/constants";
 import AnchorsList from "./AnchorsList";
+import { ContentNavigator } from "./types";
 
 const DesktopNavigator = (props: ContentNavigator) => {
   const { company } = props;
@@ -123,19 +122,17 @@ const DesktopNavigator = (props: ContentNavigator) => {
       fixWhenOffscreen
       offScreenOffset={{ top: -100 }}
       unfixWhenReturnToOriginalPosition
-      className="absolute -bottom-10 2xl:-bottom-20"
+      className="absolute -bottom-10"
     >
-      <div className="flex flex-col mt-10 w-full text-xs xl:text-lg 2xl:text-2xl">
+      <div className="flex flex-col mt-10 w-full text-xs xl:text-lg">
         <div className="flex items-center mb-3">
           <RocketshipIcon
-            className={`w-6 mr-3 2xl:w-12 2xl:mr-7 xl:mb-5 ${
+            className={`w-6 mr-3 xl:mb-5 ${
               isFixed ? "svg-black" : "svg-white"
             }`}
           />
           <span
-            className={`2xl:text-3xl font-bold ${
-              isFixed ? "text-black" : "text-white"
-            }`}
+            className={`font-bold ${isFixed ? "text-black" : "text-white"}`}
           >
             In this guide for {companyName}
           </span>
@@ -147,12 +144,12 @@ const DesktopNavigator = (props: ContentNavigator) => {
         >
           <AnchorsList fullList={isFixed} className="p-7 max-h-[50vh]" />
 
-          <div className="relative flex items-center h-10 px-5 bg-purple-500 rounded-none 2xl:px-10 2xl:h-20">
+          <div className="relative flex items-center h-10 px-5 bg-purple-500 rounded-none">
             <div
               ref={companyLogoRef}
               className="flex items-center h-[75%] w-full z-10 text-white opacity-0"
             >
-              <div className="relative z-10 svg-white w-8 h-full mr-2 xl:w-16 2xl:w-36">
+              <div className="relative z-10 svg-white w-8 h-full mr-2 xl:w-16">
                 <Image
                   className="absolute object-cover"
                   src={"/png/image.png"}
@@ -169,13 +166,13 @@ const DesktopNavigator = (props: ContentNavigator) => {
 
             <div
               ref={logoRef}
-              className="absolute left-5 z-10 svg-white w-12 xl:w-16 2xl:w-36"
+              className="absolute left-5 z-10 svg-white w-12 xl:w-16"
             >
               <LogoIcon className="w-full h-full" />
             </div>
             <div
               ref={pRef}
-              className="absolute opacity-0 left-[65%] z-10 svg-white w-4 2xl:w-8"
+              className="absolute opacity-0 left-[65%] z-10 svg-white w-4"
             >
               <LogoPIcon className="w-full h-full" />
             </div>

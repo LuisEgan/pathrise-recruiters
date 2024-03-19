@@ -29,27 +29,27 @@ export default function Home() {
         className={`${SECTION_CLASSNAMES} flex flex-col md:flex-row md:justify-between`}
       >
         <div className="h-[90vh] mb-10 md:flex md:flex-col md:w-5/12">
-          <div className="relative w-full h-full flex flex-col p-7 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none 2xl:p-14">
-            <div className="flex items-center text-xs mb-10 2xl:text-lg 2xl:mb-20">
-              <LogoIcon className="w-16 svg-white 2xl:w-40" />
+          <div className="relative w-full h-full flex flex-col p-7 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none">
+            <div className="flex items-center text-xs mb-10">
+              <LogoIcon className="w-16 svg-white" />
               <span className="ml-3">Company Resources</span>
             </div>
 
             <div className="flex flex-col">
-              <span className="text-xs text-purple-100 mb-3 lg:text-sm 2xl:text-lg 2xl:mb-10">
+              <span className="text-xs text-purple-100 mb-3 lg:text-sm">
                 Pathrise Guides
               </span>
-              <p className="font-bold text-2xl md:text-xl mb-7 xl:text-5xl 2xl:text-6xl 2xl:mb-14">
+              <p className="font-bold text-2xl md:text-xl mb-7 xl:text-5xl">
                 How to get hired according to real recruiters
               </p>
-              <p className="text-sm mb-4 lg:text-lg 2xl:text-4xl">
+              <p className="text-sm mb-4 lg:text-lg">
                 Learn the best ways we’ve found to get hired by 60+ companies
                 and counting.
               </p>
 
               <Button
                 title="Get your dream job"
-                className="mt-5 bg-white w-10/12 md:mt-0 md:w-8/12 lg:mt-[10%] 2xl:mt-[30%]"
+                className="mt-5 bg-white w-10/12 md:mt-0 md:w-8/12 lg:mt-[10%]"
                 textColorClassName="text-black"
               />
             </div>
@@ -57,7 +57,7 @@ export default function Home() {
             <PaperPlaneManIcon className="absolute right-3 bottom-0 w-1/2" />
           </div>
 
-          <div className="hidden h-[20%] p-7 rounded-bl-lg rounded-br-lg bg-white md:flex 2xl:p-14">
+          <div className="hidden h-[20%] p-7 rounded-bl-lg rounded-br-lg bg-white md:flex">
             <Testimonial {...TESTIMONIAL_PROPS} />
           </div>
         </div>
@@ -75,9 +75,9 @@ export default function Home() {
         />
 
         <div className="flex flex-col md:justify-between md:w-5/12 md:ml-16">
-          <div className="xl:px-12 2xl:px-24">
-            <div className="flex justify-center items-center mb-10 md:mt-24 2xl:mt-40 2xl:mb-20">
-              <div className="relative w-16 h-16 mr-5 rounded-xl md:rounded-full md:w-10 md:h-10 lg:w-16 lg:h-16 2xl:w-24 2xl:h-24">
+          <div className="xl:px-12">
+            <div className="flex justify-center items-center mb-10 md:mt-24">
+              <div className="relative w-16 h-16 mr-5 rounded-xl md:rounded-full md:w-10 md:h-10 lg:w-16 lg:h-16">
                 <Image
                   className="object-cover md:rounded-full"
                   src={"/png/image.png"}
@@ -87,24 +87,24 @@ export default function Home() {
                 />
               </div>
 
-              <span className="text-xl text-purple-500 font-bold md:text-base lg:text-xl 2xl:text-5xl">
+              <span className="text-xl text-purple-500 font-bold md:text-base lg:text-xl">
                 Erica Holloway
               </span>
             </div>
 
-            <p className="text-center md:text-xs md:text-left lg:text-base 2xl:text-3xl">
+            <p className="text-center md:text-xs md:text-left lg:text-base">
               Erica Holloway is a recruiter with close to a decade of talent
               acquisition experience in the ed-tech and startup space. <br />
               <br />
-              She currently leads Pathrise&apos;s recruiting efforts, touching on
-              roles in career coaching, operations, engineering, sales,
+              She currently leads Pathrise&apos;s recruiting efforts, touching
+              on roles in career coaching, operations, engineering, sales,
               marketing and more. She resides in the San Francisco Bay Area.
             </p>
           </div>
 
           <div className="hidden md:flex">
             <ArrowsIcon className="hidden mr-3 md:block" />
-            <span className="text-xs lg:text-base 2xl:text-xl">
+            <span className="text-xs lg:text-base">
               Jump to a section!
             </span>
           </div>
@@ -125,13 +125,13 @@ export default function Home() {
         <div className="flex flex-col md:flex-row">
           <div>
             <div className="mb-10">
-              <p className="text-xl font-bold 2xl:text-5xl">
+              <p className="text-xl font-bold">
                 Meet with our{" "}
                 <span className="text-purple-500">recruiting experts</span>
               </p>
             </div>
 
-            <p className="mb-10 2xl:text-4xl">
+            <p className="mb-10">
               Pathrise Recruiting Specialists are current and former recruiters
               at top companies like Amazon. Now they’re here to help you land
               your dream job.

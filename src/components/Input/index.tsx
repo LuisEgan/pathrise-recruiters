@@ -25,7 +25,7 @@ const Input: React.FC<InputProps> = (props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const focusClasses = isFocused ? "ring-2 ring-offset-2 ring-purple-200" : "";
-  const xlClassNames = `2xl:h-20 2xl:text-lg`;
+  const xlClassNames = ``;
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(true);

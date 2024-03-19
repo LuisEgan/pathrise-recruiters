@@ -107,7 +107,7 @@ const ToggablePanel = forwardRef<ToggablePanelRef, ToggablePanelProps>(
       dynamicStyles += ` ${hoverClassNames ?? "outline outline-purple-200"}`;
     }
 
-    const xlClassNames = `2xl:h-20 2xl:text-lg`;
+    const xlClassNames = ``;
 
     return (
       <div

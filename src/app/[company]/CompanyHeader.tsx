@@ -21,28 +21,28 @@ const CompanyHeader = (props: CompanyHeader) => {
     <section className="flex flex-col justify-between overflow-hidden w-full h-[80vh] bg-gray-800 text-white rounded-lg mb-10 md:overflow-visible">
       <div className="h-full flex flex-col">
         <div className="flex justify-between mb-10 p-5 md:px-10 md:mb-3 xl:p-10">
-          <div className="flex items-center text-xs xl:text-lg 2xl:text-2xl">
-            <LogoIcon className="w-16 mr-3 svg-white xl:w-40 2xl:w-60 2xl:mr-10" />
+          <div className="flex items-center text-xs xl:text-lg">
+            <LogoIcon className="w-16 mr-3 svg-white xl:w-40" />
             <span className="hidden md:block">Company Resources</span>
           </div>
 
           <Button title="Get your dream job" />
         </div>
 
-        <div className="grid grid-cols-12 px-10 md:flex-1 lg:px-16 2xl:px-28">
+        <div className="grid grid-cols-12 px-10 md:flex-1 lg:px-16">
           {/* +MD ONLY */}
           <div className="hidden relative md:block col-span-5">
             <DesktopNavigator company={company} />
           </div>
 
           <div className="relative col-span-12 md:col-span-7 md:px-10">
-            <h4 className="mb-3 text-xs xl:text-2xl 2xl:text-4xl 2xl:mb-10">
+            <h4 className="mb-3 text-xs xl:text-2xl">
               How to reach out to
             </h4>
-            <h1 className="font-bold mb-10 text-2xl xl:text-4xl 2xl:text-6xl">
+            <h1 className="font-bold mb-10 text-2xl xl:text-4xl">
               Company recruiters
             </h1>
-            <h2 className="mb-10 text-sm md:mb-5 xl:text-xl 2xl:text-3xl 2xl:mb-16">
+            <h2 className="mb-10 text-sm md:mb-5 xl:text-xl">
               Learn the best way we&apos;ve found to get hired by {companyName}
             </h2>
 
@@ -53,7 +53,7 @@ const CompanyHeader = (props: CompanyHeader) => {
                 style={{ backgroundColor: "orange" }}
                 className="mb-10"
                 iconRight={
-                  <DrawnArrowIcon className="w-2 ml-10 xl:w-3 2xl:w-7" />
+                  <DrawnArrowIcon className="w-2 ml-10 xl:w-3" />
                 }
                 icon="/png/image.png"
               />

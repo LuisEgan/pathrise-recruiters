@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     rounded = "full",
     className = "",
     textColorClassName = "text-white",
-    textSizeClassName = "text-xs lg:text-lg 2xl:text-3xl",
+    textSizeClassName = "text-xs lg:text-lg",
     title,
     icon,
     iconRight,
@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   let baseClassNames = `h-10 font-medium select-none text-nowrap text-ellipsis overflow-hidden hover:bg-purple-200`;
   baseClassNames += ` ${textSizeClassName}`;
   const lgClassNames = `lg:px-5 lg:h-12`;
-  const xlClassNames = `2xl:h-28 2xl:px-10`;
+  const xlClassNames = ``;
 
   // Ghost class
   const ghostClass = ghost
@@ -71,7 +71,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         {icon && typeof icon === "string" ? (
           <Image
             src={icon}
-            className="mr-2 xl:w-8 2xl:w-16"
+            className="mr-2 xl:w-8"
             alt="Button Icon"
             width={20}
             height={20}

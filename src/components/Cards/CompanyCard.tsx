@@ -20,7 +20,7 @@ const CompanyCard = (props: CompanyCard) => {
       className="flex flex-col bg-white rounded-2xl shadow-sm w-full hover:cursor-pointer"
       onClick={onClick}
     >
-      <div className="flex justify-center items-center flex-1 p-3 2xl:p-6">
+      <div className="flex justify-center items-center flex-1 p-3">
         <div className="relative w-32 h-16 lg:h-28">
           <Image
             className="absolute h-full w-full object-cover"
@@ -31,7 +31,7 @@ const CompanyCard = (props: CompanyCard) => {
         </div>
       </div>
       <div className="p-3 text-center">
-        <h3 className="text-xs font-bold mb-2 lg:text-sm 2xl:text-xl">
+        <h3 className="text-xs font-bold mb-2 lg:text-sm">
           {name}
         </h3>
       </div>
