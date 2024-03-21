@@ -37,8 +37,10 @@ const DesktopNavigator = (props: ContentNavigator) => {
   const [show, setShow] = useState<boolean>(false);
   const [isFixed, setIsFixed] = useState<boolean>(false);
 
-  const onFix = useMemo(() => () => setIsFixed(true), []);
-  const onUnfix = useMemo(() => () => setIsFixed(false), []);
+  const onFixChange = useMemo(
+    () => (isFixed: boolean) => setIsFixed(isFixed),
+    []
+  );
 
   const setAnimTimeline = useMemo(
     () => () => {
@@ -117,12 +119,12 @@ const DesktopNavigator = (props: ContentNavigator) => {
 
   return (
     <Fixed
-      onFix={onFix}
-      onUnfix={onUnfix}
+      onChange={onFixChange}
       fixWhenOffscreen
       offScreenOffset={{ top: -100 }}
       unfixWhenReturnToOriginalPosition
       className="absolute -bottom-10"
+      bottomLimitElementId="company-footer"
     >
       <div className="flex flex-col mt-10 w-full text-xs xl:text-lg">
         <div className="flex items-center mb-3">

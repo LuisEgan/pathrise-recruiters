@@ -59,7 +59,7 @@ const CompanyPage = (props: CompanyPage) => {
         </div>
       </section>
 
-      <CompanyFooter company={company} />
+      <CompanyFooter id="company-footer" company={company} />
     </main>
   );
 };

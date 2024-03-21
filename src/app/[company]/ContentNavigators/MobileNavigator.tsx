@@ -2,17 +2,16 @@
 
 import Fixed from "@/components/Fixed";
 import LoadingSkeleton from "@/components/Loading/Skeleton";
+import { BASE_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
 import { capitalizeOnlyFirstLetter } from "@/utils/strings";
-import DrawnArrowIcon from "@svg/drawn-arrow.svg";
 import ChevronIcon from "@svg/chevron-down.svg";
+import DrawnArrowIcon from "@svg/drawn-arrow.svg";
 import gsap from "gsap";
 import Image from "next/image";
 import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
-import { ContentNavigator } from "./types";
-import { COMPANY_SECTIONS } from "../contants";
-import { BASE_ANIM } from "@/utils/constants";
 import AnchorsList from "./AnchorsList";
+import { ContentNavigator } from "./types";
 
 const MobileNavigator = (props: ContentNavigator) => {
   const { company } = props;
@@ -32,11 +31,12 @@ const MobileNavigator = (props: ContentNavigator) => {
 
   const companyName = capitalizeOnlyFirstLetter(company.name);
 
-  const onFix = useMemo(() => () => setIsFixed(true), []);
-  const onUnfix = useMemo(
-    () => () => {
-      setIsFixed(false);
-      setIsExpanded(false);
+  const onFixChange = useMemo(
+    () => (isFixed: boolean) => {
+      setIsFixed(isFixed);
+      if (!isFixed) {
+        setIsExpanded(false);
+      }
     },
     []
   );
@@ -127,8 +127,7 @@ const MobileNavigator = (props: ContentNavigator) => {
   return (
     <Fixed
       ref={containerRef}
-      onFix={onFix}
-      onUnfix={onUnfix}
+      onChange={onFixChange}
       styles={fixedStyles}
       fixWhenOffscreen
       offScreenOffset={{ top: -10 }}

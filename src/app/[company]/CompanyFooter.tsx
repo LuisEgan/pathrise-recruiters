@@ -2,16 +2,17 @@ import RocketshipIcon from "@svg/rocketship.svg";
 import ComputerGuyIcon from "@svg/characters/character-computer.svg";
 import PathrisePIcon from "@svg/pathrise-p.svg";
 import Button from "@/components/Button";
+import { BaseProps } from "@/components/types";
 
-interface CompanyFooter {
+interface CompanyFooter extends BaseProps {
   company: string;
 }
 
 const CompanyFooter = (props: CompanyFooter) => {
-  const { company } = props;
+  const { company, ...baseProps } = props;
 
   return (
-    <section>
+    <section {...baseProps}>
       <div className={`mb-5rounded-lg border border-gray-300 p-10 mb-10`}>
         <RocketshipIcon className="w-10 mb-5" />
         <h1 className="font-bold mb-5 text-2xl">

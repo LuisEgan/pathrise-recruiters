@@ -10,6 +10,10 @@ interface Fixed extends BaseProps {
   fixedOffset?: { top?: number; left?: number };
   onFix?: () => void;
   onUnfix?: () => void;
+  onChange?: (isFixed: boolean) => void;
+
+  // * Element that will stop the fixed element from scrolling down
+  bottomLimitElementId?: string;
 }
 
 const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
@@ -23,6 +27,8 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     className: classNameProp,
     onFix,
     onUnfix,
+    onChange,
+    bottomLimitElementId,
     ...baseProps
   } = props;
 
@@ -30,6 +36,8 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
 
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const [originalRect, setOriginalRect] = useState<DOMRect>();
+  const [originalParent, setOriginalParent] = useState<Node | null>();
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   const fixContainer = () => {
     const observer = new IntersectionObserver(
@@ -40,11 +48,15 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
         if (alwaysFix) {
           setIsFixed(true);
           if (onFix) onFix();
+          if (onChange) onChange(true);
           return;
         }
         if (entry.isIntersecting) return;
 
-        if (fixWhenOffscreen && onFix) onFix();
+        if (fixWhenOffscreen) {
+          if (onFix) onFix();
+          if (onChange) onChange(true);
+        }
         setIsFixed(fixWhenOffscreen);
       },
       {
@@ -75,19 +87,53 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
       if (isAboveOriginalPos) {
         setIsFixed(false);
         if (onUnfix) onUnfix();
+        if (onChange) onChange(false);
       }
     }
   };
 
-  const updateOriginalRect = () => {
+  const pauseFromScrolling = () => {
+    // * Check if the bottom limit element is in view
+    if (bottomLimitElementId) {
+      const limitElem = document.getElementById(bottomLimitElementId);
+      if (!limitElem) return;
+
+      const { top } = limitElem?.getBoundingClientRect() || { top: Infinity };
+      const isLimitElemInView = top <= window.innerHeight;
+
+      setIsPaused((wasPaused) => {
+        if (!containerRef.current) return wasPaused;
+
+        const resumeFixed = !isLimitElemInView && wasPaused;
+        const pause = isLimitElemInView && !wasPaused;
+        if (resumeFixed) {
+          // * Make containerRef child of original parent
+          originalParent?.appendChild(containerRef.current as Node);
+        }
+
+        if (pause) {
+          // * Get current position of containerRef
+          const { left } = containerRef.current.getBoundingClientRect();
+          containerRef.current.style.left = `${left}px`;
+          // * Make containerRef child of body
+          document.body.appendChild(containerRef.current as Node);
+        }
+
+        return isLimitElemInView;
+      });
+    }
+  };
+
+  const updateOriginalValues = () => {
     if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setOriginalRect(rect);
+      const container = containerRef.current;
+      setOriginalRect(container.getBoundingClientRect());
+      setOriginalParent(container.parentElement);
     }
   };
 
   const getDimensionsPercentage = () => {
-    // how much does the original container take up of the viewport
+    // * How much does the original container take up of the viewport
     if (!originalRect) return { height: 0, width: 0 };
     const viewportHeight = window.innerHeight;
     const containerHeight = originalRect.height;
@@ -100,7 +146,7 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     return { height, width };
   };
 
-  // Forward the ref to the container div
+  // * Forward ref
   useEffect(() => {
     if (ref && typeof ref === "function") {
       ref(containerRef.current);
@@ -109,45 +155,53 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     }
   }, [ref]);
 
+  // * Initial setup
   useEffect(() => {
-    updateOriginalRect();
+    updateOriginalValues();
     fixContainer();
   }, []);
 
+  // * Event listeners
   useEffect(() => {
     document.addEventListener("scroll", unfixContainer);
-    window.addEventListener("resize", updateOriginalRect);
+    document.addEventListener("scroll", pauseFromScrolling);
+    window.addEventListener("resize", updateOriginalValues);
     return () => {
       document.removeEventListener("scroll", unfixContainer);
-      window.removeEventListener("resize", updateOriginalRect);
+      document.removeEventListener("scroll", pauseFromScrolling);
+      window.removeEventListener("resize", updateOriginalValues);
     };
   }, [originalRect, isFixed]);
 
-  let fixedStyles: CSSProperties = {};
+  let dynamicStyles: CSSProperties = { left: 0 };
 
   if (isFixed) {
     const { height, width } = getDimensionsPercentage();
 
-    fixedStyles = {
-      position: "fixed",
-      top: `${fixedOffset?.top ?? 0}px`,
+    dynamicStyles = {
+      position: isPaused ? "absolute" : "fixed",
       zIndex: 1000,
       width: `${width}vw`,
       height: `${height}vh`,
+      top: isPaused ? window.scrollY : `${fixedOffset?.top ?? 0}px`,
     };
 
     if (fixedOffset?.left) {
-      fixedStyles.left = `${fixedOffset.left}px`;
+      dynamicStyles.left = `${fixedOffset.left}px`;
     }
   }
 
-  const className = `${classNameProp} ${isFixed ? "smooth-descend" : ""}`;
+  const isAboveTop =
+    (containerRef.current?.getBoundingClientRect().top || 0) < 0;
+  const className = `${classNameProp} ${
+    isFixed && !isPaused && isAboveTop ? "smooth-descend" : ""
+  }`;
 
   return (
     <div
       ref={containerRef}
       {...baseProps}
-      style={{ ...fixedStyles, ...styles }}
+      style={{ ...dynamicStyles, ...styles }}
       className={`${className}`}
     >
       {children}
