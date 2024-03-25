@@ -20,27 +20,27 @@ const SourceSerifPro = localFont({
   variable: "--font-serif",
   src: [
     {
-      path: "./fonts/SourceSerifPro-ExtraLight.otf",
+      path: "../../public/fonts/SourceSerifPro-ExtraLight.otf",
       weight: "100",
       style: "extra-light",
     },
     {
-      path: "./fonts/SourceSerifPro-Light.otf",
+      path: "../../public/fonts/SourceSerifPro-Light.otf",
       weight: "300",
       style: "light",
     },
     {
-      path: "./fonts/SourceSerifPro-Regular.otf",
+      path: "../../public/fonts/SourceSerifPro-Regular.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/SourceSerifPro-SemiBold.otf",
+      path: "../../public/fonts/SourceSerifPro-SemiBold.otf",
       weight: "600",
       style: "semi-bold",
     },
     {
-      path: "./fonts/SourceSerifPro-Bold.otf",
+      path: "../../public/fonts/SourceSerifPro-Bold.otf",
       weight: "700",
       style: "bold",
     },
