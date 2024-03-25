@@ -20,12 +20,12 @@ const Testimonial = (props: Testimonial) => {
     quote,
   } = props;
   return (
-    <div className={`flex h-full items-center ${className}`}>
+    <div className={`flex h-full items-center overflow-hidden ${className}`}>
       <div>
         <div
           className={`relative w-12 h-12 mr-10 ${
             roundedPic ? "rounded-full" : "rounded-xl"
-          } lg:w-28 lg:h-28`}
+          } lg:w-24 lg:h-24`}
         >
           <Image
             className={`object-cover ${roundedPic ? "rounded-full" : ""}`}
@@ -37,7 +37,7 @@ const Testimonial = (props: Testimonial) => {
         </div>
       </div>
 
-      <div className="flex flex-col text-xs lg:text-base">
+      <div className="flex flex-col text-xxs lg:text-base">
         <p className="mb-3">❝{quote}❞</p>
 
         <div className="flex items-center justify-between w-full">

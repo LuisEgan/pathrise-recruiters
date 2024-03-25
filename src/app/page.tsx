@@ -29,7 +29,7 @@ export default function Home() {
         className={`${SECTION_CLASSNAMES} flex flex-col md:flex-row md:justify-between`}
       >
         <div className="h-[90vh] mb-10 md:flex md:flex-col md:w-5/12">
-          <div className="relative w-full h-full flex flex-col p-10 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none md:p-16">
+          <div className="relative w-full h-full flex flex-col p-10 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none lg:p-16">
             <div className="flex items-center text-xs mb-10">
               <LogoIcon className="w-16 svg-white" />
               <span className="ml-3">Company Resources</span>
@@ -49,7 +49,7 @@ export default function Home() {
 
               <Button
                 title="Get your dream job"
-                className="mt-5 bg-white w-10/12 md:mt-0 md:w-8/12 lg:mt-[10%]"
+                className="mt-5 bg-white w-10/12 md:mt-0 xl:w-8/12 lg:mt-[10%]"
                 textColorClassName="text-black"
               />
             </div>
@@ -57,7 +57,7 @@ export default function Home() {
             <PaperPlaneManIcon className="absolute right-3 bottom-0 w-1/2" />
           </div>
 
-          <div className="hidden h-[25%] p-16 rounded-bl-lg rounded-br-lg bg-white md:flex">
+          <div className="hidden h-[25%] px-10 py-5 rounded-bl-lg rounded-br-lg bg-white md:flex">
             <Testimonial {...TESTIMONIAL_PROPS} />
           </div>
         </div>
