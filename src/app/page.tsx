@@ -29,7 +29,7 @@ export default function Home() {
         className={`${SECTION_CLASSNAMES} flex flex-col md:flex-row md:justify-between`}
       >
         <div className="h-[90vh] mb-10 md:flex md:flex-col md:w-5/12">
-          <div className="relative w-full h-full flex flex-col p-10 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none lg:p-16">
+          <div className="relative w-full h-full flex flex-col p-10 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none lg:py-16 lg:px-20">
             <div className="flex items-center text-xs mb-10">
               <LogoIcon className="w-16 svg-white" />
               <span className="ml-3">Company Resources</span>
@@ -39,7 +39,7 @@ export default function Home() {
               <span className="text-xs text-purple-100 mb-3 lg:text-sm">
                 Pathrise Guides
               </span>
-              <p className="serif font-bold text-2xl md:text-xl mb-7 xl:text-5xl">
+              <p className="serif font-bold text-2xl md:text-xl mb-7 xl:text-4xl">
                 How to get hired according to real recruiters
               </p>
               <p className="text-sm mb-4 lg:text-lg">
@@ -121,8 +121,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${SECTION_CLASSNAMES} w-full`}>
-        <div className="flex flex-col relative px-5 md:px-0 md:my-52 md:flex-row md:justify-between md:h-[45vh]">
+      <section className={`${SECTION_CLASSNAMES} w-full !mb-0`}>
+        <div className="flex flex-col relative px-5 md:px-0 md:mt-52 md:flex-row md:justify-between md:h-[45vh]">
           <div className="text-left md:text-center md:w-full z-10">
             <div className="serif mb-7">
               <p className="text-xl font-bold md:text-2xl">
@@ -149,7 +149,7 @@ export default function Home() {
 
           <div className="relative hidden rounded-xl left-0 top-0 w-full h-full bg-gray-100 md:absolute md:block">
             <Image
-              className="origin-bottom blur-[1px] object-cover"
+              className="origin-bottom blur-[2px] object-cover"
               src={"/webp/fellows-transparent.webp"}
               alt={"experts"}
               fill

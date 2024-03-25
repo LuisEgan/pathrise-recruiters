@@ -14,7 +14,7 @@ const ProTip = (props: ProTip) => {
 
   return (
     <div
-      className={`${className} p-7 rounded-lg flex flex-col bg-purple-500 text-white mb-5`}
+      className={`${className} px-16 py-10 rounded-lg flex flex-col bg-purple-500 text-white mb-5`}
     >
       <div className="flex items-center">
         <LightbulbShinningIcon className="w-7 mr-3" />

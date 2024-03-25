@@ -9,7 +9,7 @@ interface CompanyFooter extends BaseProps {
 }
 
 const PathriseDescription = (props: BaseProps) => (
-  <p className={`!leading-7 text-xs mb-10 md:text-sm ${props.className}`}>
+  <p className={`!leading-7 text-xs mb-10 md:text-lg ${props.className}`}>
     <b>
       Pathrise is a career accelerator that helps people land their dream jobs.
     </b>{" "}

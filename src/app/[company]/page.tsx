@@ -44,18 +44,18 @@ const CompanyPage = (props: CompanyPage) => {
             {...TESTIMONIAL_PROPS}
             className="p-7 bg-purple-500 rounded-lg text-white mb-5"
           />
-          <MdContainer data-section="1" content={`1 - ${DUMMY_CONTENT}`} />
-          <MdContainer data-section="2" content={`2 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="1" content={`${DUMMY_CONTENT}`} />
+          <MdContainer data-section="2" content={`${DUMMY_CONTENT}`} />
           <ProTip number={1} content={PRO_TIPS[0](company)} />
-          <MdContainer data-section="3" content={`3 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="3" content={`${DUMMY_CONTENT}`} />
           <ProTip number={2} content={PRO_TIPS[0](company)} />
-          <MdContainer data-section="4" content={`4 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="4" content={`${DUMMY_CONTENT}`} />
           <ProTip number={3} content={PRO_TIPS[1](company)} />
-          <MdContainer data-section="5" content={`5 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="5" content={`${DUMMY_CONTENT}`} />
           <ProTip number={4} content={PRO_TIPS[2](company)} />
-          <MdContainer data-section="6" content={`6 - ${DUMMY_CONTENT}`} />
-          <MdContainer data-section="7" content={`7 - ${DUMMY_CONTENT}`} />
-          <MdContainer data-section="8" content={`8 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="6" content={`${DUMMY_CONTENT}`} />
+          <MdContainer data-section="7" content={`${DUMMY_CONTENT}`} />
+          <MdContainer data-section="8" content={`${DUMMY_CONTENT}`} />
         </div>
       </section>
 
