@@ -136,12 +136,18 @@ const MobileNavigator = (props: ContentNavigator) => {
       className={`relative flex justify-between p-5 px-7 bg-orange-500 md:hidden`}
     >
       <div
-        className={`no-scrollbar flex items-center overflow-y-auto w-3/4 h-full ${
+        className={`no-scrollbar flex items-center w-3/4 h-full ${
           isFixed ? "flex-col" : ""
         }`}
       >
         {isFixed ? (
-          <AnchorsList fullList className="no-scrollbar" id="list" />
+          <AnchorsList
+            fullList
+            className="no-scrollbar"
+            id="list"
+            onAnchorClick={toggleExpansion}
+            disableAnchors={!isExpanded}
+          />
         ) : (
           <>
             <div className="relative w-7 h-7">

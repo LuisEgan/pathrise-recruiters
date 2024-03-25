@@ -38,6 +38,7 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   const [originalRect, setOriginalRect] = useState<DOMRect>();
   const [originalParent, setOriginalParent] = useState<Node | null>();
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  console.log("isPaused: ", isPaused);
 
   const fixContainer = () => {
     const observer = new IntersectionObserver(
@@ -104,17 +105,13 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
       setIsPaused((wasPaused) => {
         if (!containerRef.current) return wasPaused;
 
-        const resumeFixed = !isLimitElemInView && wasPaused;
         const pause = isLimitElemInView && !wasPaused;
-        if (resumeFixed) {
-          // * Make containerRef child of original parent
-          originalParent?.appendChild(containerRef.current as Node);
-        }
-
         if (pause) {
           // * Get current position of containerRef
           const { left } = containerRef.current.getBoundingClientRect();
           containerRef.current.style.left = `${left}px`;
+          containerRef.current.style.position = "absolute";
+          containerRef.current.style.top = `${window.scrollY}px`;
           // * Make containerRef child of body
           document.body.appendChild(containerRef.current as Node);
         }
@@ -172,6 +169,13 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
       window.removeEventListener("resize", updateOriginalValues);
     };
   }, [originalRect, isFixed]);
+
+  // * Reset container position when unpaused
+  useEffect(() => {
+    if (!isPaused) {
+      originalParent?.appendChild(containerRef.current as Node);
+    }
+  }, [isPaused]);
 
   let dynamicStyles: CSSProperties = { left: 0 };
 

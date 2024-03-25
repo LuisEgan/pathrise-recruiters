@@ -31,6 +31,22 @@ export const PRO_TIPS = [
 ];
 
 export const COMPANY_SECTIONS = [
+  "1 - Research the company",
+  "2 - Find the right recruiter",
+  "3 - Write a compelling email",
+  "4 - Follow up",
+  "5 - Prepare for the interview",
+  "6 - Interview",
+  "7 - Follow up",
+  "8 - Negotiate",
+  (company: string) => `What are ${company} recruiters looking for?`,
+  (company: string) => `Is ${company} hiring in 2023?`,
+  "When do you meet with recruiters in the interview process?",
+  (company: string) => `Which ${company} recruiters should you contact?`,
+  (company: string) => `What are ${company} recruiters looking for?`,
+  (company: string) => `Is ${company} hiring in 2023?`,
+  "When do you meet with recruiters in the interview process?",
+  (company: string) => `Which ${company} recruiters should you contact?`,
   (company: string) => `What are ${company} recruiters looking for?`,
   (company: string) => `Is ${company} hiring in 2023?`,
   "When do you meet with recruiters in the interview process?",

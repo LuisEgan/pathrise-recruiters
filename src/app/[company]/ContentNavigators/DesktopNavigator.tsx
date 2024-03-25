@@ -123,7 +123,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
       fixWhenOffscreen
       offScreenOffset={{ top: -100 }}
       unfixWhenReturnToOriginalPosition
-      className="absolute -bottom-10"
+      className="absolute -bottom-10 w-full"
       bottomLimitElementId="company-footer"
     >
       <div className="flex flex-col mt-10 w-full text-xs xl:text-lg">
@@ -144,7 +144,11 @@ const DesktopNavigator = (props: ContentNavigator) => {
           ref={containerRef}
           className="flex flex-col justify-between overflow-hidden bg-gray-100 rounded-lg text-black"
         >
-          <AnchorsList fullList={isFixed} className="p-7 max-h-[50vh]" />
+          <AnchorsList
+            fullList={isFixed}
+            className="p-7 max-h-[50vh]"
+            listScrollTopOffset={-30}
+          />
 
           <div className="relative flex items-center h-10 px-5 bg-purple-500 rounded-none">
             <div

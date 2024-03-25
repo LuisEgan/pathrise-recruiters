@@ -1,10 +1,10 @@
 import Testimonial, {
   Testimonial as TestimonialProps,
 } from "@/components/Testimonial";
+import MdContainer from "../../components/Markdown/MdContainer";
+import ProTip from "../../components/ProTip";
 import CompanyFooter from "./CompanyFooter";
 import CompanyHeader from "./CompanyHeader";
-import MdContainer from "./MdContainer";
-import ProTip from "./ProTip";
 import { PRO_TIPS } from "./contants";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
@@ -39,23 +39,23 @@ const CompanyPage = (props: CompanyPage) => {
         <div className="hidden md:block md:col-span-5"></div>
 
         <div className="flex flex-col col-span-12 md:col-span-7 md:pl-10">
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="0" content={DUMMY_CONTENT} />
           <Testimonial
             {...TESTIMONIAL_PROPS}
             className="p-7 bg-purple-500 rounded-lg text-white mb-5"
           />
-          <MdContainer content={DUMMY_CONTENT} />
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="1" content={`1 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="2" content={`2 - ${DUMMY_CONTENT}`} />
           <ProTip number={1} content={PRO_TIPS[0](company)} />
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="3" content={`3 - ${DUMMY_CONTENT}`} />
           <ProTip number={2} content={PRO_TIPS[0](company)} />
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="4" content={`4 - ${DUMMY_CONTENT}`} />
           <ProTip number={3} content={PRO_TIPS[1](company)} />
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="5" content={`5 - ${DUMMY_CONTENT}`} />
           <ProTip number={4} content={PRO_TIPS[2](company)} />
-          <MdContainer content={DUMMY_CONTENT} />
-          <MdContainer content={DUMMY_CONTENT} />
-          <MdContainer content={DUMMY_CONTENT} />
+          <MdContainer data-section="6" content={`6 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="7" content={`7 - ${DUMMY_CONTENT}`} />
+          <MdContainer data-section="8" content={`8 - ${DUMMY_CONTENT}`} />
         </div>
       </section>
 
