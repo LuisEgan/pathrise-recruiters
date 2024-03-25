@@ -16,36 +16,36 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
-const SourceSerifPro = localFont({
-  variable: "--font-serif",
-  src: [
-    {
-      path: "../../public/fonts/SourceSerifPro-ExtraLight.otf",
-      weight: "100",
-      style: "extra-light",
-    },
-    {
-      path: "../../public/fonts/SourceSerifPro-Light.otf",
-      weight: "300",
-      style: "light",
-    },
-    {
-      path: "../../public/fonts/SourceSerifPro-Regular.otf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/SourceSerifPro-SemiBold.otf",
-      weight: "600",
-      style: "semi-bold",
-    },
-    {
-      path: "../../public/fonts/SourceSerifPro-Bold.otf",
-      weight: "700",
-      style: "bold",
-    },
-  ],
-});
+// const SourceSerifPro = localFont({
+//   variable: "--font-serif",
+//   src: [
+//     {
+//       path: "../../public/fonts/SourceSerifPro-ExtraLight.otf",
+//       weight: "100",
+//       style: "extra-light",
+//     },
+//     {
+//       path: "../../public/fonts/SourceSerifPro-Light.otf",
+//       weight: "300",
+//       style: "light",
+//     },
+//     {
+//       path: "../../public/fonts/SourceSerifPro-Regular.otf",
+//       weight: "500",
+//       style: "normal",
+//     },
+//     {
+//       path: "../../public/fonts/SourceSerifPro-SemiBold.otf",
+//       weight: "600",
+//       style: "semi-bold",
+//     },
+//     {
+//       path: "../../public/fonts/SourceSerifPro-Bold.otf",
+//       weight: "700",
+//       style: "bold",
+//     },
+//   ],
+// });
 
 export const metadata: Metadata = {
   title: "Pathrise - Recruiters guides",
@@ -58,10 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${lato.className} ${inter.variable} ${SourceSerifPro.variable}`}
-    >
+    <html lang="en" className={`${lato.className} ${inter.variable}`}>
       <body>
         {children}
         <footer>
