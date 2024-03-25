@@ -134,7 +134,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
             }`}
           />
           <span
-            className={`font-bold ${isFixed ? "text-black" : "text-white"}`}
+            className={`serif font-bold ${isFixed ? "text-black" : "text-white"}`}
           >
             In this guide for {companyName}
           </span>

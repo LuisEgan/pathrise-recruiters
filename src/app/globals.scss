@@ -49,6 +49,13 @@ html {
   width: 100%;
 }
 
+.inter {
+  font-family: var(--font-inter);
+}
+.serif {
+  font-family: var(--font-serif);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

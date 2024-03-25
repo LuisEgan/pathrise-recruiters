@@ -114,10 +114,10 @@ const AnchorsList = (props: AnchorsList) => {
   const SECTIONS = fullList
     ? COMPANY_SECTIONS
     : COMPANY_SECTIONS.slice(0, PARTIAL_LIST);
-  const className = `flex flex-col overflow-y-auto ${classNameProp}`;
+  const className = `flex flex-col overflow-y-auto text-sm ${classNameProp}`;
 
   return (
-    <div id="parent" ref={containerRef} className={className}>
+    <div ref={containerRef} className={className}>
       {SECTIONS.map((section, index) => (
         <span
           key={index}

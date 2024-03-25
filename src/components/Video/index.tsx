@@ -67,12 +67,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
           />
         </div>
         <div
-          className={`absolute w-[110%] h-[110%] bg-gray-800 rounded-lg -top-24 -left-[5%] ${videoBgMdStyles}`}
+          className={`absolute w-[105%] h-[110%] bg-gray-800 rounded-2xl -top-24 -left-[2.5%] ${videoBgMdStyles}`}
         ></div>
       </div>
 
       {showSkipControls && (
-        <div className="flex mt-4 w-full flex-wrap">
+        <div className="flex mt-10 w-full flex-wrap">
           {SKIP_BUTTONS.map(({ skipTo, title }) => (
             <Button
               rounded="lg"

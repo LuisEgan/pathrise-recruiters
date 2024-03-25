@@ -10,15 +10,22 @@ export interface Testimonial extends BaseProps {
   roundedPic?: boolean;
 }
 const Testimonial = (props: Testimonial) => {
-  const { className, roundedPic, author, company, picUrl, position, quote } =
-    props;
+  const {
+    className = "",
+    roundedPic,
+    author,
+    company,
+    picUrl,
+    position,
+    quote,
+  } = props;
   return (
     <div className={`flex h-full items-center ${className}`}>
       <div>
         <div
-          className={`relative w-12 h-12 mr-5 ${
+          className={`relative w-12 h-12 mr-10 ${
             roundedPic ? "rounded-full" : "rounded-xl"
-          } lg:w-16 lg:h-16`}
+          } lg:w-28 lg:h-28`}
         >
           <Image
             className={`object-cover ${roundedPic ? "rounded-full" : ""}`}
@@ -30,7 +37,7 @@ const Testimonial = (props: Testimonial) => {
         </div>
       </div>
 
-      <div className="flex flex-col text-xxs lg:text-xs">
+      <div className="flex flex-col text-xs lg:text-base">
         <p className="mb-3">❝{quote}❞</p>
 
         <div className="flex items-center justify-between w-full">

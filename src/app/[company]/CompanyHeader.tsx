@@ -18,7 +18,7 @@ const CompanyHeader = (props: CompanyHeader) => {
   const companyName = capitalizeOnlyFirstLetter(company.name);
 
   return (
-    <section className="flex flex-col justify-between overflow-hidden w-full h-[80vh] bg-gray-800 text-white rounded-lg mb-10 md:overflow-visible">
+    <section className="flex flex-col justify-between overflow-hidden w-full h-[70vh] bg-gray-800 text-white rounded-lg mb-10 md:overflow-visible">
       <div className="h-full flex flex-col">
         <div className="flex justify-between mb-10 p-5 md:px-10 md:mb-3 xl:p-10">
           <div className="flex items-center text-xs xl:text-lg">
@@ -36,10 +36,8 @@ const CompanyHeader = (props: CompanyHeader) => {
           </div>
 
           <div className="relative col-span-12 md:col-span-7 md:px-10">
-            <h4 className="mb-3 text-xs xl:text-2xl">
-              How to reach out to
-            </h4>
-            <h1 className="font-bold mb-10 text-2xl xl:text-4xl">
+            <h4 className="serif mb-3 text-xs xl:text-2xl">How to reach out to</h4>
+            <h1 className="serif font-bold mb-10 text-2xl xl:text-4xl">
               Company recruiters
             </h1>
             <h2 className="mb-10 text-sm md:mb-5 xl:text-xl">
@@ -52,9 +50,7 @@ const CompanyHeader = (props: CompanyHeader) => {
                 title={`${companyName} Guide`}
                 style={{ backgroundColor: "orange" }}
                 className="mb-10"
-                iconRight={
-                  <DrawnArrowIcon className="w-2 ml-10 xl:w-3" />
-                }
+                iconRight={<DrawnArrowIcon className="w-2 ml-10 xl:w-3" />}
                 icon="/png/image.png"
               />
               <div className="flex">

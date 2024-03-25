@@ -8,7 +8,7 @@ const MdContainer = (props: MdContainer) => {
   const { content, className = "", dataId, ...baseProps } = props;
   return (
     <div
-      className={`${className} w-full mb-5 bg-transparent rounded-lg border border-gray-300 p-10`}
+      className={`${className} w-full mb-5 rounded-lg border border-gray-300 bg-gray-200 p-16`}
       data-id={dataId}
       {...baseProps}
     >

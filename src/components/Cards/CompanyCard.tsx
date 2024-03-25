@@ -31,7 +31,7 @@ const CompanyCard = (props: CompanyCard) => {
         </div>
       </div>
       <div className="p-3 text-center">
-        <h3 className="text-xs font-bold mb-2 lg:text-sm">
+        <h3 className="inter text-xs font-bold mb-2 lg:text-sm">
           {name}
         </h3>
       </div>

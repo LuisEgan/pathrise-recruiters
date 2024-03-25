@@ -173,7 +173,13 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   // * Reset container position when unpaused
   useEffect(() => {
     if (!isPaused) {
-      originalParent?.appendChild(containerRef.current as Node);
+      // check if containerRef is child of originalParent
+      if (
+        originalParent &&
+        containerRef.current?.parentNode !== originalParent
+      ) {
+        originalParent.appendChild(containerRef.current as Node);
+      }
     }
   }, [isPaused]);
 

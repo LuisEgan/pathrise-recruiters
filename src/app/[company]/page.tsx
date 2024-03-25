@@ -32,7 +32,7 @@ const CompanyPage = (props: CompanyPage) => {
   } = props;
 
   return (
-    <main className="w-full bg-gray-100 py-5 px-3 md:p-7">
+    <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
       <CompanyHeader company={{ name: "amazon" }} />
 
       <section className="grid grid-cols-12">

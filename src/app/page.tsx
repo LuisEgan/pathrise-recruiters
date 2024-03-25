@@ -22,14 +22,14 @@ const TESTIMONIAL_PROPS: TestimonialProps = {
 };
 
 export default function Home() {
-  const SECTION_CLASSNAMES = "w-full m-auto mb-16";
+  const SECTION_CLASSNAMES = "m-auto mb-16";
   return (
     <main className="w-full bg-gray-100 py-5 px-3 md:p-7">
       <section
         className={`${SECTION_CLASSNAMES} flex flex-col md:flex-row md:justify-between`}
       >
         <div className="h-[90vh] mb-10 md:flex md:flex-col md:w-5/12">
-          <div className="relative w-full h-full flex flex-col p-7 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none">
+          <div className="relative w-full h-full flex flex-col p-10 rounded-lg bg-purple-500 text-white pb-36 mb-10 md:h-[80%] md:mb-0 md:pb-10 md:rounded-bl-none md:rounded-br-none md:p-16">
             <div className="flex items-center text-xs mb-10">
               <LogoIcon className="w-16 svg-white" />
               <span className="ml-3">Company Resources</span>
@@ -39,7 +39,7 @@ export default function Home() {
               <span className="text-xs text-purple-100 mb-3 lg:text-sm">
                 Pathrise Guides
               </span>
-              <p className="font-bold text-2xl md:text-xl mb-7 xl:text-5xl">
+              <p className="serif font-bold text-2xl md:text-xl mb-7 xl:text-5xl">
                 How to get hired according to real recruiters
               </p>
               <p className="text-sm mb-4 lg:text-lg">
@@ -57,7 +57,7 @@ export default function Home() {
             <PaperPlaneManIcon className="absolute right-3 bottom-0 w-1/2" />
           </div>
 
-          <div className="hidden h-[20%] p-7 rounded-bl-lg rounded-br-lg bg-white md:flex">
+          <div className="hidden h-[25%] p-16 rounded-bl-lg rounded-br-lg bg-white md:flex">
             <Testimonial {...TESTIMONIAL_PROPS} />
           </div>
         </div>
@@ -65,7 +65,9 @@ export default function Home() {
         <Filter className="md:w-7/12 md:ml-5" />
       </section>
 
-      <section className={`${SECTION_CLASSNAMES} flex flex-col md:flex-row`}>
+      <section
+        className={`${SECTION_CLASSNAMES} flex flex-col w-full md:w-10/12 md:flex-row`}
+      >
         <VideoPlayer
           showSkipControls
           url={PATHRISE_VIDEO_URL}
@@ -75,8 +77,8 @@ export default function Home() {
         />
 
         <div className="flex flex-col md:justify-between md:w-5/12 md:ml-16">
-          <div className="xl:px-12">
-            <div className="flex justify-center items-center mb-10 md:mt-24">
+          <div>
+            <div className="flex justify-center items-center mb-10 md:mt-32 lg:mt-40">
               <div className="relative w-16 h-16 mr-5 rounded-xl md:rounded-full md:w-10 md:h-10 lg:w-16 lg:h-16">
                 <Image
                   className="object-cover md:rounded-full"
@@ -87,12 +89,12 @@ export default function Home() {
                 />
               </div>
 
-              <span className="text-xl text-purple-500 font-bold md:text-base lg:text-xl">
+              <span className="serif text-xl text-purple-500 font-bold md:text-base lg:text-2xl">
                 Erica Holloway
               </span>
             </div>
 
-            <p className="text-center md:text-xs md:text-left lg:text-base">
+            <p className="text-center md:text-xs md:text-left lg:text-lg 2xl:text-2xl">
               Erica Holloway is a recruiter with close to a decade of talent
               acquisition experience in the ed-tech and startup space. <br />
               <br />
@@ -104,9 +106,7 @@ export default function Home() {
 
           <div className="hidden md:flex">
             <ArrowsIcon className="hidden mr-3 md:block" />
-            <span className="text-xs lg:text-base">
-              Jump to a section!
-            </span>
+            <span className="text-xs lg:text-xl">Jump to a section!</span>
           </div>
         </div>
       </section>
@@ -121,30 +121,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={SECTION_CLASSNAMES}>
-        <div className="flex flex-col md:flex-row">
-          <div>
-            <div className="mb-10">
-              <p className="text-xl font-bold">
+      <section className={`${SECTION_CLASSNAMES} w-full`}>
+        <div className="flex flex-col relative px-5 md:px-0 md:my-52 md:flex-row md:justify-between md:h-[45vh]">
+          <div className="text-left md:text-center md:w-full z-10">
+            <div className="serif mb-7">
+              <p className="text-xl font-bold md:text-2xl">
                 Meet with our{" "}
                 <span className="text-purple-500">recruiting experts</span>
               </p>
             </div>
 
-            <p className="mb-10">
+            <p className="mb-10 w-full md:w-5/12 md:m-auto md:text-center md:mb-5">
               Pathrise Recruiting Specialists are current and former recruiters
               at top companies like Amazon. Now they’re here to help you land
               your dream job.
             </p>
 
-            <div className="hidden md:flex">
+            <div className="hidden md:flex justify-center">
               <Button
                 category="dark"
                 title="Get the guides"
-                className="mr-5 bg-black"
+                className="mr-3 bg-black"
               />
               <Button title="Get your dream job" />
             </div>
+          </div>
+
+          <div className="relative hidden rounded-xl left-0 top-0 w-full h-full bg-gray-100 md:absolute md:block">
+            <Image
+              className="origin-bottom blur-[1px] object-cover"
+              src={"/webp/fellows-transparent.webp"}
+              alt={"experts"}
+              fill
+            />
           </div>
 
           <div className="relative flex flex-col justify-center items-center w-full h-72 overflow-hidden md:hidden">

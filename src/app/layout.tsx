@@ -1,9 +1,51 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.scss";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.scss";
+import { Inter, Lato } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const lato = Lato({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+  variable: "--font-lato",
+});
+
+const SourceSerifPro = localFont({
+  variable: "--font-serif",
+  src: [
+    {
+      path: "./fonts/SourceSerifPro-ExtraLight.otf",
+      weight: "100",
+      style: "extra-light",
+    },
+    {
+      path: "./fonts/SourceSerifPro-Light.otf",
+      weight: "300",
+      style: "light",
+    },
+    {
+      path: "./fonts/SourceSerifPro-Regular.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/SourceSerifPro-SemiBold.otf",
+      weight: "600",
+      style: "semi-bold",
+    },
+    {
+      path: "./fonts/SourceSerifPro-Bold.otf",
+      weight: "700",
+      style: "bold",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Pathrise - Recruiters guides",
@@ -16,10 +58,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
+    <html
+      lang="en"
+      className={`${lato.className} ${inter.variable} ${SourceSerifPro.variable}`}
+    >
+      <body>
         {children}
-        <footer><Footer /></footer>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

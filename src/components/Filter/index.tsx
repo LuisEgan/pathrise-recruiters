@@ -66,7 +66,7 @@ const Filter = (props: Filter) => {
               key={i}
               onClick={() => push("/reddit")}
               company={{
-                name: `Company ${i + 1}`,
+                name: `Amazon ${i + 1}`,
                 image:
                   "https://static.wixstatic.com/media/d2252d_4c1a1bda6a774bd68f789c0770fd16e5~mv2.png",
               }}
