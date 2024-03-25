@@ -54,7 +54,7 @@ const CompanyFooter = (props: CompanyFooter) => {
 
           <div className="hidden w-7/12 m-auto mb-10 md:block">
             <p className="mb-3 text-orange-500 font-bold">
-              Here's what we covered
+              Here&apos;s what we covered
             </p>
             <ol className="list-decimal">
               <li>What are company recruiters looking for </li>
