@@ -15,7 +15,7 @@ const LoadingSkeleton = (props: LoadingSkeleton) => {
     style.width = width;
   }
 
-  return <div className={`${className} loading-skeleton`} {...{ style }}></div>;
+  return <div className={`${className} h-10 w-10 loading-skeleton`} {...{ style }}></div>;
 };
 
 export default LoadingSkeleton;

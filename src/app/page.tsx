@@ -39,7 +39,7 @@ export default function Home() {
               <span className="text-xs text-purple-100 mb-3 lg:text-sm">
                 Pathrise Guides
               </span>
-              <p className="serif font-bold text-2xl md:text-xl mb-7 xl:text-4xl">
+              <p className="font-serif font-bold text-2xl md:text-xl mb-7 xl:text-4xl">
                 How to get hired according to real recruiters
               </p>
               <p className="text-sm mb-4 lg:text-lg">
@@ -89,7 +89,7 @@ export default function Home() {
                 />
               </div>
 
-              <span className="serif text-xl text-purple-500 font-bold md:text-base lg:text-2xl">
+              <span className="font-serif text-xl text-purple-500 font-bold md:text-base lg:text-2xl">
                 Erica Holloway
               </span>
             </div>
@@ -124,7 +124,7 @@ export default function Home() {
       <section className={`${SECTION_CLASSNAMES} w-full !mb-0`}>
         <div className="flex flex-col relative px-5 md:px-0 md:mt-52 md:flex-row md:justify-between md:h-[45vh]">
           <div className="text-left md:text-center md:w-full z-10">
-            <div className="serif mb-7">
+            <div className="font-serif mb-7">
               <p className="text-xl font-bold md:text-2xl">
                 Meet with our{" "}
                 <span className="text-purple-500">recruiting experts</span>

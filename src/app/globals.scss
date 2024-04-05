@@ -49,10 +49,10 @@ html {
   width: 100%;
 }
 
-.inter {
+.font-inter {
   font-family: var(--font-inter);
 }
-.serif {
+.font-serif {
   font-family: var(--font-serif);
 }
 
@@ -85,15 +85,54 @@ html {
 .loading-skeleton {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
-  animation: loading 1.5s infinite;
+  animation: loading-skeleton-anim 1.5s infinite;
 }
 
-@keyframes loading {
+@keyframes loading-skeleton-anim {
   0% {
     background-position: 200% 0;
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+.loading-border-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.loading-border {
+  > * {
+    z-index: 1;
+  }
+  &::before {
+    position: absolute;
+    content: " ";
+    display: block;
+    width: 160px;
+    height: 1600%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #d9dcf2,
+      #4050bf,
+      #263073,
+      transparent
+    );
+    animation: full-rotation 5000ms infinite linear;
+  }
+}
+
+@keyframes full-rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
   }
 }
 
@@ -107,5 +146,17 @@ html {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.75s ease forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

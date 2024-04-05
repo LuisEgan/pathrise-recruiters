@@ -4,7 +4,10 @@ import { useRef, useState } from "react";
 import ToggablePanel, { ToggablePanelRef } from "../Panels/ToggablePanel";
 import { BaseProps } from "../types";
 
-export type SelectOption = { value: string | number; label: string };
+export type SelectOption<TValue = string | number> = {
+  value: TValue;
+  label?: string;
+};
 interface SelectProps extends BaseProps {
   options: Array<SelectOption>;
   placeholder?: string;
@@ -41,7 +44,7 @@ const Select: React.FC<SelectProps> = (props) => {
       setLabel(`${placeholder} - ${newSelectedOptionsIndexes.length} selected`);
     } else {
       newSelectedOptionsIndexes = [index];
-      setLabel(options[index].label);
+      setLabel(options[index].label || `${options[index].value}`);
       toggleRef.current?.toggle(false);
     }
 
@@ -74,7 +77,7 @@ const Select: React.FC<SelectProps> = (props) => {
               }`}
             ></div>
           )}
-          <span className="w-4">{label}</span>
+          <span className="w-4">{label || value}</span>
         </div>
       ))}
     </ToggablePanel>

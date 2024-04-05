@@ -10,7 +10,7 @@ const VideoHeader = () => {
   return (
     <div className="flex justify-center items-center mb-4 text-white text-sm md:text-black md:mb-12">
       <PlayButtonIcon className={`mr-3 md:scale-110 md:mr-5 ${isMobile ? "svg-white" : "svg-black"}`} />
-      <h1 className="serif text-md font-bold md:text-xl lg:text-3xl">6 Tips with a Pathrise Recruiter</h1>
+      <h1 className="font-serif text-md font-bold md:text-xl lg:text-3xl">6 Tips with a Pathrise Recruiter</h1>
     </div>
   );
 };

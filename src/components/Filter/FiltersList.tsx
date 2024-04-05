@@ -29,7 +29,8 @@ const FiltersList = (props: FilterList) => {
           key={id}
           styles={selectsStyles}
           onChange={handleSelectChange(id)}
-          {...{ id, placeholder, options }}
+          placeholder={placeholder || id}
+          {...{ id, options }}
         />
       ))}
     </div>

@@ -1,8 +1,9 @@
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import { Inter, Lato } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.scss";
-import { Inter, Lato } from "next/font/google";
+import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -58,16 +59,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${lato.className} ${inter.variable} ${SourceSerifPro.variable}`}
-    >
-      <body>
-        {children}
-        <footer>
-          <Footer />
-        </footer>
-      </body>
-    </html>
+    <Providers>
+      <html
+        lang="en"
+        className={`${lato.className} ${inter.variable} ${SourceSerifPro.variable}`}
+      >
+        <body>
+          {children}
+          <footer>
+            <Footer />
+          </footer>
+        </body>
+      </html>
+    </Providers>
   );
 }

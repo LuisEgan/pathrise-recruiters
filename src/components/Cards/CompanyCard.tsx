@@ -1,39 +1,50 @@
 import Image from "next/image";
 import { BaseProps } from "../types";
+import { Company } from "@/utils/types";
 
 interface CompanyCard extends BaseProps {
-  company: {
-    image: string;
-    name: string;
-  };
+  company: Company;
   onClick?: () => void;
+  isLoading?: boolean;
 }
 
 const CompanyCard = (props: CompanyCard) => {
-  const { company, onClick } = props;
+  const { company, onClick, isLoading } = props;
   if (!company) return <div>No company :(</div>;
 
-  const { image, name } = company;
+  const { name } = company;
 
   return (
     <div
-      className="flex flex-col bg-white rounded-2xl shadow-sm w-full hover:cursor-pointer"
+      className={`flex flex-col max-h-44 bg-white rounded-2xl shadow-sm w-full hover:cursor-pointer ${
+        isLoading ? "fade-in" : ""
+      }`}
       onClick={onClick}
     >
       <div className="flex justify-center items-center flex-1 p-3">
-        <div className="relative w-32 h-16 lg:h-28">
-          <Image
-            className="absolute h-full w-full object-cover"
-            src={image}
-            alt={name}
-            fill
-          />
+        <div
+          className={`relative w-36 h-16 lg:h-28 rounded-lg ${
+            isLoading ? "loading-skeleton" : ""
+          }`}
+        >
+          {!isLoading && (
+            <Image
+              className="absolute h-full w-full object-cover"
+              src={`/png/${"image"}.png`}
+              alt={name}
+              fill
+            />
+          )}
         </div>
       </div>
-      <div className="p-3 text-center">
-        <h3 className="inter text-xs font-bold mb-2 lg:text-sm">
-          {name}
-        </h3>
+      <div className="p-3 text-center overflow-hidden overflow-ellipsis text-nowrap w-9/12 m-auto">
+        <span
+          className={`font-inter text-xs font-bold mb-2 lg:text-sm ${
+            isLoading ? "text-white" : ""
+          }`}
+        >
+          {isLoading ? "loading" : name}
+        </span>
       </div>
     </div>
   );

@@ -36,8 +36,8 @@ const CompanyHeader = (props: CompanyHeader) => {
           </div>
 
           <div className="relative col-span-12 md:col-span-7 md:px-10">
-            <h4 className="serif mb-3 text-xs xl:text-2xl">How to reach out to</h4>
-            <h1 className="serif font-bold mb-10 text-2xl xl:text-4xl">
+            <h4 className="font-serif mb-3 text-xs xl:text-2xl">How to reach out to</h4>
+            <h1 className="font-serif font-bold mb-10 text-2xl xl:text-4xl">
               Company recruiters
             </h1>
             <h2 className="mb-10 text-sm md:mb-5 xl:text-xl">

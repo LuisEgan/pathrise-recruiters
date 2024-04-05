@@ -26,10 +26,22 @@ interface CompanyPage {
   };
 }
 
-const CompanyPage = (props: CompanyPage) => {
+const getProduct = async () => {
+  try {
+    const res = await fetch("https://dummyjson.com/products/1");
+    return await res.json();
+  } catch (error) {
+    console.log("error: ", error);
+    return {};
+  }
+};
+
+const CompanyPage = async (props: CompanyPage) => {
   const {
     params: { company },
   } = props;
+
+  const product: any = await getProduct();
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
@@ -39,6 +51,7 @@ const CompanyPage = (props: CompanyPage) => {
         <div className="hidden md:block md:col-span-5"></div>
 
         <div className="flex flex-col col-span-12 md:col-span-7 md:pl-10">
+          ID = {product.id}
           <MdContainer data-section="0" content={DUMMY_CONTENT} />
           <Testimonial
             {...TESTIMONIAL_PROPS}

@@ -1,91 +1,96 @@
+import { Company } from "@/utils/types";
 import { SelectOption } from "../Select";
 
+const GRADES_VALUES = [
+  { value: "A+" },
+  { value: "A" },
+  { value: "A-" },
+  { value: "B+" },
+  { value: "B" },
+  { value: "B-" },
+  { value: "C+" },
+  { value: "C" },
+  { value: "C-" },
+  { value: "D+" },
+  { value: "D" },
+  { value: "D-" },
+];
+
+const AVERAGES_VALUES = [
+  { value: "Above Average" },
+  { value: "Average" },
+  { value: "Below Average" },
+];
+
 interface Filter {
-  id: string;
-  placeholder: string;
+  id: keyof Company;
+  placeholder?: string;
   options: Array<SelectOption>;
   multiple?: boolean;
 }
 export const FILTER_OPTIONS: Array<Filter> = [
   {
-    id: "work-life-balance",
-    placeholder: "Work-life balance",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
+    id: "workLifeBalance",
+    placeholder: "Work Life Balance",
+    options: GRADES_VALUES,
   },
   {
-    id: "salary-averages",
-    placeholder: "Salary averages",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
-  },
-  {
-    id: "employees",
-    placeholder: "Employees",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
+    id: "salaryAverages",
+    placeholder: "Salary Averages",
+    options: AVERAGES_VALUES,
   },
   {
     id: "benefits",
     placeholder: "Benefits",
     options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
+      { value: "Unlimited PTO" },
+      { value: "Wellness Stipend" },
+      { value: "Company Retreats" },
+      { value: "Parental leave" },
+      { value: "Healthcare" },
+      { value: "401(k)" },
+      { value: "Flexible work culture" },
+      { value: "Equity" },
+      { value: "PTO" },
+      { value: "Dental Insurance" },
+      { value: "Vision Insurance" },
+      { value: "Disability insurance" },
+      { value: "Life Insurance" },
+      { value: "Mental Health care" },
+      { value: "Work from home" },
+      { value: "Performance Bonus" },
+      { value: "Stock options" },
+      { value: "Tuition Reimbursement" },
     ],
   },
   {
-    id: "office",
-    placeholder: "Office",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
-  },
-  {
-    id: "job-openings",
-    placeholder: "Job openings",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
-  },
-  {
-    id: "size",
+    id: "companySize",
     placeholder: "Size",
     options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
+      { value: "1-50" },
+      { value: "50-100" },
+      { value: "100-500" },
+      { value: "500-1000" },
+      { value: "1000-5000" },
+      { value: "5000-10000" },
+      { value: "10000+" },
     ],
   },
   {
-    id: "office-structure",
-    placeholder: "Office structure",
-    options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
-    ],
+    id: "officeStructure",
+    placeholder: "Office Structure",
+    options: [{ value: "In office" }, { value: "Remote" }, { value: "Hybrid" }],
   },
   {
-    id: "roles-available",
-    placeholder: "Roles available",
+    id: "rolesAvailable",
+    placeholder: "Roles Available",
     options: [
-      { label: "Option 1", value: "option1" },
-      { label: "Option 2", value: "option2" },
-      { label: "Option 3", value: "option3" },
+      { value: "Marketing and sales" },
+      { label: "Technical Engineering", value: "Techical Engineering" },
+      { label: "Product and Strategy", value: "product and strategy" },
+      { value: "Design" },
+      { value: "IT" },
+      { value: "Finance" },
     ],
   },
 ];
