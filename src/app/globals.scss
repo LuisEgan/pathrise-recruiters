@@ -97,13 +97,6 @@ html {
   }
 }
 
-.loading-border-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
 .loading-border {
   > * {
     z-index: 1;

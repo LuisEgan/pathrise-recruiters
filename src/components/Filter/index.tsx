@@ -86,9 +86,9 @@ const Filter = (props: Filter) => {
 
       <BorderLoading
         isLoading={isFetching}
-        className="flex-1 rounded-lg overflow-y-auto"
+        className="flex-1 rounded-lg"
       >
-        <div className="grid grid-cols-3 gap-2 overflow-y-auto rounded-lg p-3">
+        <div className="grid grid-cols-3 gap-2 h-full overflow-y-auto rounded-lg p-3">
           {isLoading
             ? LOADING_ARRAY.map((_, i) => (
                 <CompanyCard key={i} company={{} as Company} isLoading />

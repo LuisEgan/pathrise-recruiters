@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BaseProps } from "../types";
 import { Company } from "@/utils/types";
+import { parseLogoName } from "@/utils/strings";
 
 interface CompanyCard extends BaseProps {
   company: Company;
@@ -29,15 +30,15 @@ const CompanyCard = (props: CompanyCard) => {
         >
           {!isLoading && (
             <Image
-              className="absolute h-full w-full object-cover"
-              src={`/png/${"image"}.png`}
+              className="absolute h-full w-full object-contain"
+              src={`/logos/companies/${parseLogoName(name)}.webp`}
               alt={name}
               fill
             />
           )}
         </div>
       </div>
-      <div className="p-3 text-center overflow-hidden overflow-ellipsis text-nowrap w-9/12 m-auto">
+      <div className="pb-5 text-center overflow-hidden overflow-ellipsis text-nowrap w-9/12 m-auto">
         <span
           className={`font-inter text-xs font-bold mb-2 lg:text-sm ${
             isLoading ? "text-white" : ""

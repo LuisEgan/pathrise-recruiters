@@ -12,12 +12,14 @@ const BorderLoading = (props: BorderLoading) => {
 
   return (
     <div
-      className={`loading-border-container ${bgColor} ${
+      className={`relative flex justify-center items-center overflow-hidden ${bgColor} ${
         isLoading ? "loading-border" : ""
       }  ${className}`}
       {...baseProps}
     >
-      <div className={`h-[98%] w-[98%] overflow-y-auto ${bgColor}`}>{children}</div>
+      <div className={`h-[98%] w-[98%] ${bgColor}`}>
+        {children}
+      </div>
     </div>
   );
 };

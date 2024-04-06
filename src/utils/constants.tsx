@@ -8,3 +8,5 @@ export const BASE_FADE_IN_ANIM = {
   from: { yPercent: 100, opacity: 0 },
   to: { yPercent: 0, opacity: 1, ...BASE_ANIM },
 };
+
+export const LOGOS_DIR = "./public/logos/companies";
