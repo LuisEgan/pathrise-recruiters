@@ -1,3 +1,7 @@
+import { BlockSection } from "@/app/[company]/ContentNavigators/types";
+import { Recruiter } from "./types";
+import { BLOCK_SECTIONS_ANCHORS } from "@/app/[company]/contants";
+
 export const capitalizeOnlyFirstLetter = (str = "") =>
   str.charAt(0).toUpperCase() + str.toLocaleLowerCase().slice(1);
 
@@ -42,4 +46,91 @@ export const parseLogoName = (name: string): string => {
     return `${name}.${extension}`;
   }
   return name;
+};
+
+export const replaceCompanyPlaceholders = (
+  recruiter: Recruiter,
+  company: string
+) => {
+  const recruiterEntries = Object.entries(recruiter);
+  const updatedRecruiter = {} as Recruiter;
+
+  recruiterEntries.forEach(([key, value]) => {
+    updatedRecruiter[key as keyof Recruiter] = value
+      .replaceAll(`[COMPANY]`, capitalizeOnlyFirstLetter(company))
+      .replaceAll(
+        `[COPY FROM COMPANY GUIDE]`,
+        addLineBreaks(recruiter.interviewProcess)
+      );
+  });
+
+  return updatedRecruiter;
+};
+
+export const camelCaseToSentence = (str: string) => {
+  const words = str.replace(/([a-z])([A-Z])/g, "$1 $2").split(/(?=[A-Z])/);
+
+  return words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+export const getAnchorSections = (
+  recruiter: Recruiter
+): Array<BlockSection> => {
+  // * This is needs to be done manually because the order is important
+
+  const sections: Array<BlockSection> = [];
+
+  if (recruiter.whatAreRecruitersLookingFor)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.whatAreRecruitersLookingFor!,
+      title: "What are recruiters looking for?",
+    });
+  if (recruiter.isCompanyHiringIn2024)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.isCompanyHiringIn2024!,
+      title: "Is the company hiring in 2024?",
+    });
+  if (recruiter.typesOfRecruiters)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.typesOfRecruiters!,
+      title: "Types of recruiters",
+    });
+  if (recruiter.whichRecruitersShouldYouContact)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.whichRecruitersShouldYouContact!,
+      title: "Which recruiters should you contact?",
+    });
+  if (recruiter.howToFindEmailAddress)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.howToFindEmailAddress!,
+      title: "How to find email address",
+    });
+  if (recruiter.companyCulture)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.companyCulture!,
+      title: "Company culture",
+    });
+  if (recruiter.howToColdEmail)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.howToColdEmail!,
+      title: "How to cold email",
+    });
+  if (recruiter.emailTemplate)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.emailTemplate!,
+      title: "Email template",
+    });
+  if (recruiter.aiColdEmail)
+    sections.push({
+      anchorId: BLOCK_SECTIONS_ANCHORS.aiColdEmail!,
+      title: "AI cold email",
+    });
+
+  return sections;
+};
+
+export const addLineBreaks = (str: string) => {
+  return str.replaceAll("•", "  \n•");
 };

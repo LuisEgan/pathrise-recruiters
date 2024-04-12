@@ -2,17 +2,18 @@
 
 import { BaseProps } from "@/components/types";
 import { useEffect, useRef, useState } from "react";
-import { COMPANY_SECTIONS } from "../contants";
+import { BlockSection } from "./types";
 
 interface AnchorsList extends BaseProps {
   fullList?: boolean;
   onAnchorClick?: (id: string) => void;
   disableAnchors?: boolean;
   listScrollTopOffset?: number;
+  sections?: Array<BlockSection>;
 }
 
 const OBSERVE_IDS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const PARTIAL_LIST = 3;
+const PARTIAL_LIST_LENGTH = 3;
 let scrollTimeout: NodeJS.Timeout;
 let scrolledToSection = false;
 
@@ -23,6 +24,7 @@ const AnchorsList = (props: AnchorsList) => {
     onAnchorClick,
     disableAnchors,
     listScrollTopOffset = 0,
+    sections = [],
   } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +57,7 @@ const AnchorsList = (props: AnchorsList) => {
     const el = document.querySelector(`[data-section="${id}"]`);
     if (el) {
       scrolledToSection = true;
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveSection(id);
     }
 
@@ -111,30 +113,27 @@ const AnchorsList = (props: AnchorsList) => {
     scrollAnchorList(activeSection, 0);
   }, [activeSection]);
 
-  const SECTIONS = fullList
-    ? COMPANY_SECTIONS
-    : COMPANY_SECTIONS.slice(0, PARTIAL_LIST);
+  const SECTIONS = fullList ? sections : sections.slice(0, PARTIAL_LIST_LENGTH);
   const className = `flex flex-col overflow-y-auto text-sm ${classNameProp}`;
 
   return (
     <div ref={containerRef} className={className}>
-      {SECTIONS.map((section, index) => (
+      {SECTIONS.map(({ anchorId, title }, index) => (
         <span
-          key={index}
+          key={title}
           className={`mb-3 cursor-pointer ${
-            fullList && +activeSection === index ? "text-orange-500" : ""
+            fullList && activeSection === anchorId ? "text-orange-500" : ""
           }`}
-          data-anchor={`${index}`}
-          onClick={scrollToSection.bind(null, `${index}`)}
+          data-anchor={anchorId}
+          onClick={scrollToSection.bind(null, anchorId)}
         >
-          {index + 1}.{" "}
-          {typeof section === "function" ? section("reddit") : section}
+          {index + 1}. {title}
         </span>
       ))}
 
       {!fullList && (
         <span className="text-xs">
-          + {COMPANY_SECTIONS.length - PARTIAL_LIST} more
+          + {sections.length - PARTIAL_LIST_LENGTH} more
         </span>
       )}
     </div>

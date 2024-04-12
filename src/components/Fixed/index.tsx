@@ -38,7 +38,6 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   const [originalRect, setOriginalRect] = useState<DOMRect>();
   const [originalParent, setOriginalParent] = useState<Node | null>();
   const [isPaused, setIsPaused] = useState<boolean>(false);
-  console.log("isPaused: ", isPaused);
 
   const fixContainer = () => {
     const observer = new IntersectionObserver(

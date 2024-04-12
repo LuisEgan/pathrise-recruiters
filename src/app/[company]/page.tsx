@@ -1,3 +1,4 @@
+import { getRecruiter } from "@/api/recruiters";
 import Testimonial, {
   Testimonial as TestimonialProps,
 } from "@/components/Testimonial";
@@ -5,7 +6,7 @@ import MdContainer from "../../components/Markdown/MdContainer";
 import ProTip from "../../components/ProTip";
 import CompanyFooter from "./CompanyFooter";
 import CompanyHeader from "./CompanyHeader";
-import { PRO_TIPS } from "./contants";
+import { BLOCK_SECTIONS_ANCHORS } from "./contants";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
@@ -17,58 +18,90 @@ const TESTIMONIAL_PROPS: TestimonialProps = {
     "These guides helped me prep for a final round interview with Delloite, so thankful for these!",
 };
 
-const DUMMY_CONTENT = `## How to write cold emails to [COMPANY] recruiters and what to say
-- If you're reaching out to find a Sales Development Representative (SDR) at [COMPANY], make sure you focus on how you approach your funnels differently and why you are the right fit for this specific team.`;
-
 interface CompanyPage {
   params: {
     company: string;
   };
 }
 
-const getProduct = async () => {
-  try {
-    const res = await fetch("https://dummyjson.com/products/1");
-    return await res.json();
-  } catch (error) {
-    console.log("error: ", error);
-    return {};
-  }
-};
-
 const CompanyPage = async (props: CompanyPage) => {
   const {
     params: { company },
   } = props;
 
-  const product: any = await getProduct();
+  const recruiter = await getRecruiter({ company });
+  const {
+    whatAreRecruitersLookingFor,
+    quote,
+    isCompanyHiringIn2024,
+    typesOfRecruiters,
+    tipOne,
+    whichRecruitersShouldYouContact,
+    tipTwo,
+    howToFindEmailAddress,
+    tipThree,
+    companyCulture,
+    tipFour,
+    howToColdEmail,
+    emailTemplate,
+    aiColdEmail,
+  } = recruiter;
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
-      <CompanyHeader company={{ name: "amazon" }} />
+      <CompanyHeader company={{ name: company }} recruiter={recruiter} />
 
       <section className="grid grid-cols-12">
         <div className="hidden md:block md:col-span-5"></div>
 
         <div className="flex flex-col col-span-12 md:col-span-7 md:pl-10">
-          ID = {product.id}
-          <MdContainer data-section="0" content={DUMMY_CONTENT} />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.whatAreRecruitersLookingFor}
+            content={whatAreRecruitersLookingFor}
+          />
           <Testimonial
             {...TESTIMONIAL_PROPS}
+            quote={quote}
             className="p-7 bg-purple-500 rounded-lg text-white mb-5"
           />
-          <MdContainer data-section="1" content={`${DUMMY_CONTENT}`} />
-          <MdContainer data-section="2" content={`${DUMMY_CONTENT}`} />
-          <ProTip number={1} content={PRO_TIPS[0](company)} />
-          <MdContainer data-section="3" content={`${DUMMY_CONTENT}`} />
-          <ProTip number={2} content={PRO_TIPS[0](company)} />
-          <MdContainer data-section="4" content={`${DUMMY_CONTENT}`} />
-          <ProTip number={3} content={PRO_TIPS[1](company)} />
-          <MdContainer data-section="5" content={`${DUMMY_CONTENT}`} />
-          <ProTip number={4} content={PRO_TIPS[2](company)} />
-          <MdContainer data-section="6" content={`${DUMMY_CONTENT}`} />
-          <MdContainer data-section="7" content={`${DUMMY_CONTENT}`} />
-          <MdContainer data-section="8" content={`${DUMMY_CONTENT}`} />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.isCompanyHiringIn2024}
+            content={isCompanyHiringIn2024}
+          />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.typesOfRecruiters}
+            content={typesOfRecruiters}
+          />
+          <ProTip number={1} content={tipOne} />
+          <MdContainer
+            data-section={
+              BLOCK_SECTIONS_ANCHORS.whichRecruitersShouldYouContact
+            }
+            content={whichRecruitersShouldYouContact}
+          />
+          <ProTip number={2} content={tipTwo} />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.howToFindEmailAddress}
+            content={howToFindEmailAddress}
+          />
+          <ProTip number={3} content={tipThree} />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.companyCulture}
+            content={companyCulture}
+          />
+          <ProTip number={4} content={tipFour} />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.howToColdEmail}
+            content={howToColdEmail}
+          />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.emailTemplate}
+            content={emailTemplate}
+          />
+          <MdContainer
+            data-section={BLOCK_SECTIONS_ANCHORS.aiColdEmail}
+            content={aiColdEmail}
+          />
         </div>
       </section>
 

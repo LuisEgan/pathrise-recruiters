@@ -67,3 +67,26 @@ export type SocialNetworks =
   | "instagram"
   | "youtube"
   | "share";
+
+export interface CompanyRecruiter {
+  company: string;
+  whatAreRecruitersLookingFor: string;
+  isCompanyHiringIn2024: string;
+  typesOfRecruiters: string;
+  whichRecruitersShouldYouContact: string;
+  howToFindEmailAddress: string;
+  companyCulture: string;
+  emailTemplate: string;
+  interviewProcess: string;
+}
+
+export interface Recruiter extends CompanyRecruiter {
+  howToReachOutToRecruiters: string;
+  quote: string;
+  tipOne: string;
+  tipTwo: string;
+  tipThree: string;
+  tipFour: string;
+  howToColdEmail: string;
+  aiColdEmail: string;
+}

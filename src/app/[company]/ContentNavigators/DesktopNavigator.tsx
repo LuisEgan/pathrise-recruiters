@@ -2,10 +2,9 @@
 
 import SocialNetwork from "@/components/Button/SocialNetwork";
 import Fixed from "@/components/Fixed";
-import LoadingSkeleton from "@/components/Loading/Skeleton";
 import { BASE_ANIM, BASE_FADE_IN_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
-import { capitalizeOnlyFirstLetter } from "@/utils/strings";
+import { capitalizeOnlyFirstLetter, getAnchorSections } from "@/utils/strings";
 import LogoIcon from "@svg/pathrise-logo.svg";
 import LogoPIcon from "@svg/pathrise-p.svg";
 import RocketshipIcon from "@svg/rocketship.svg";
@@ -16,7 +15,7 @@ import AnchorsList from "./AnchorsList";
 import { ContentNavigator } from "./types";
 
 const DesktopNavigator = (props: ContentNavigator) => {
-  const { company } = props;
+  const { company, recruiter } = props;
   const { width } = useWindowSize();
 
   const IS_SSR = typeof window === "undefined";
@@ -57,7 +56,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
           bottomBgRef.current,
           {
             ...BASE_ANIM,
-            backgroundColor: "#FF4500",
+            backgroundColor: "#b3b9e6",
             skewX: -20,
             x: "-43%",
           },
@@ -115,7 +114,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
     };
   }, [show]);
 
-  if (IS_SSR || !show) return <LoadingSkeleton />;
+  if (IS_SSR || !show) return null;
 
   return (
     <Fixed
@@ -134,7 +133,9 @@ const DesktopNavigator = (props: ContentNavigator) => {
             }`}
           />
           <span
-            className={`font-serif font-bold ${isFixed ? "text-black" : "text-white"}`}
+            className={`font-serif font-bold ${
+              isFixed ? "text-black" : "text-white"
+            }`}
           >
             In this guide for {companyName}
           </span>
@@ -148,6 +149,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
             fullList={isFixed}
             className="p-7 max-h-[50vh]"
             listScrollTopOffset={-30}
+            sections={getAnchorSections(recruiter)}
           />
 
           <div className="relative flex items-center h-10 px-5 bg-purple-500 rounded-none">
@@ -158,7 +160,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
               <div className="relative z-10 svg-white w-8 h-full mr-2 xl:w-16">
                 <Image
                   className="absolute object-cover"
-                  src={"/png/image.png"}
+                  src={`/logos/companies/${company.name}.webp`}
                   alt={"company logo"}
                   fill
                   sizes="100% 100%"
@@ -166,7 +168,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
               </div>
 
               <span className="overflow-hidden overflow-ellipsis text-nowrap w-[35%]">
-                Reddit
+                {companyName}
               </span>
             </div>
 

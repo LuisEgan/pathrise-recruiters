@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import SocialNetwork from "@/components/Button/SocialNetwork";
 import { capitalizeOnlyFirstLetter } from "@/utils/strings";
-import { Company } from "@/utils/types";
+import { Company, Recruiter } from "@/utils/types";
 import PresentationIcon from "@svg/characters/character-presentation.svg";
 import DrawnArrowIcon from "@svg/drawn-arrow.svg";
 import LogoIcon from "@svg/pathrise-logo.svg";
@@ -10,10 +10,11 @@ import MobileNavigator from "./ContentNavigators/MobileNavigator";
 
 interface CompanyHeader {
   company: Company;
+  recruiter: Recruiter;
 }
 
 const CompanyHeader = (props: CompanyHeader) => {
-  const { company } = props;
+  const { company, recruiter } = props;
 
   const companyName = capitalizeOnlyFirstLetter(company.name);
 
@@ -32,11 +33,13 @@ const CompanyHeader = (props: CompanyHeader) => {
         <div className="grid grid-cols-12 px-10 md:flex-1 lg:px-16">
           {/* +MD ONLY */}
           <div className="hidden relative md:block col-span-5">
-            <DesktopNavigator company={company} />
+            <DesktopNavigator company={company} recruiter={recruiter} />
           </div>
 
           <div className="relative col-span-12 md:col-span-7 md:px-10">
-            <h4 className="font-serif mb-3 text-xs xl:text-2xl">How to reach out to</h4>
+            <h4 className="font-serif mb-3 text-xs xl:text-2xl">
+              How to reach out to
+            </h4>
             <h1 className="font-serif font-bold mb-10 text-2xl xl:text-4xl">
               Company recruiters
             </h1>
@@ -48,10 +51,9 @@ const CompanyHeader = (props: CompanyHeader) => {
             <div className="hidden md:block">
               <Button
                 title={`${companyName} Guide`}
-                style={{ backgroundColor: "orange" }}
-                className="mb-10"
+                className="mb-10 bg-purple-200"
                 iconRight={<DrawnArrowIcon className="w-2 ml-10 xl:w-3" />}
-                icon="/png/image.png"
+                icon={`/logos/companies/${company.name}.webp`}
               />
               <div className="flex">
                 <SocialNetwork className="mr-3" network="share" />
@@ -66,7 +68,7 @@ const CompanyHeader = (props: CompanyHeader) => {
       </div>
 
       {/* MOBILE ONY */}
-      <MobileNavigator company={company} />
+      <MobileNavigator company={company} recruiter={recruiter} />
     </section>
   );
 };

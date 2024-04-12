@@ -6,9 +6,11 @@ interface MdContainer extends BaseProps {
 }
 const MdContainer = (props: MdContainer) => {
   const { content, className = "", dataId, ...baseProps } = props;
+
+  if (!content) return null;
   return (
     <div
-      className={`${className} w-full mb-5 rounded-lg border border-gray-300 bg-gray-200 p-16`}
+      className={`${className} w-full mb-5 rounded-lg border border-gray-400 bg-gray-200 p-16`}
       data-id={dataId}
       {...baseProps}
     >

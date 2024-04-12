@@ -1,7 +1,6 @@
 "use client";
 
 import Fixed from "@/components/Fixed";
-import LoadingSkeleton from "@/components/Loading/Skeleton";
 import { BASE_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
 import { capitalizeOnlyFirstLetter } from "@/utils/strings";
@@ -122,7 +121,7 @@ const MobileNavigator = (props: ContentNavigator) => {
 
   const fixedStyles: CSSProperties = isExpanded ? {} : {};
 
-  if (IS_SSR || !show) return <LoadingSkeleton />;
+  if (IS_SSR || !show) return null;
 
   return (
     <Fixed
