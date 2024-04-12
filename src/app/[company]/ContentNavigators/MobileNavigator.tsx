@@ -3,7 +3,7 @@
 import Fixed from "@/components/Fixed";
 import { BASE_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
-import { getAnchorSections } from "@/utils/strings";
+import { getAnchorSections, parseLogoName } from "@/utils/strings";
 import ChevronIcon from "@svg/chevron-down.svg";
 import DrawnArrowIcon from "@svg/drawn-arrow.svg";
 import gsap from "gsap";
@@ -148,7 +148,7 @@ const MobileNavigator = (props: ContentNavigator) => {
             <div className="relative w-16 h-7">
               <Image
                 className="absolute object-contain"
-                src={`/logos/companies/${companyName}.webp`}
+                src={`/logos/companies/${parseLogoName(companyName)}.webp`}
                 alt={"company logo"}
                 fill
                 sizes="100% 100%"
