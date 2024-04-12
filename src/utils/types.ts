@@ -78,6 +78,7 @@ export interface CompanyRecruiter {
   companyCulture: string;
   emailTemplate: string;
   interviewProcess: string;
+  values: string;
 }
 
 export interface Recruiter extends CompanyRecruiter {

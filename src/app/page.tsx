@@ -16,7 +16,7 @@ const TESTIMONIAL_PROPS: TestimonialProps = {
   author: "Felix M.",
   company: "Delloite",
   position: "Data Analyst",
-  picUrl: "/png/image.png",
+  picUrl: "/png/Felix.png",
   quote:
     "These guides helped me prep for a final round interview with Delloite, so thankful for these!",
 };
@@ -46,12 +46,16 @@ export default function Home() {
                 Learn the best ways we’ve found to get hired by 60+ companies
                 and counting.
               </p>
-
-              <Button
-                title="Get your dream job"
-                className="mt-5 bg-white w-10/12 md:mt-0 xl:w-8/12 lg:mt-[10%]"
-                textColorClassName="text-black"
-              />
+              <a
+                target="__blank"
+                href="https://www.pathrise.com/apply?utm_source=recruiter&utm_medium=content"
+              >
+                <Button
+                  title="Get your dream job"
+                  className="mt-5 bg-white w-10/12 md:mt-0 xl:w-8/12 lg:mt-[10%]"
+                  textColorClassName="text-black"
+                />
+              </a>
             </div>
 
             <PaperPlaneManIcon className="absolute right-3 bottom-0 w-1/2" />
@@ -149,7 +153,7 @@ export default function Home() {
 
           <div className="relative hidden rounded-xl left-0 top-0 w-full h-full bg-gray-100 md:absolute md:block">
             <Image
-              className="origin-bottom blur-[2px] object-cover"
+              className="origin-bottom object-cover"
               src={"/webp/fellows-transparent.webp"}
               alt={"experts"}
               fill

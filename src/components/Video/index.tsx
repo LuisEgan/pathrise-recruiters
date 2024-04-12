@@ -79,6 +79,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
               key={title}
               title={title}
               textColorClassName="text-black"
+              hoverClassName="hover:bg-gray-200"
               className="mr-3 mt-3 bg-white border border-black font-bold md:w-[unset]"
               onClick={handleSkip.bind(null, skipTo)}
             />

@@ -5,7 +5,7 @@ import { Company } from "@/utils/types";
 import FilterIcon from "@svg/filter.svg";
 import SearchIcon from "@svg/search.svg";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { useQuery } from "react-query";
 import Button from "../Button";
 import CompanyCard from "../Cards/CompanyCard";
@@ -29,12 +29,13 @@ const Filter = (props: Filter) => {
   const [filters, setFilters] = useState<SelectedFilters>(
     {} as SelectedFilters
   );
+  const [searchedCompany, setSearchedCompany] = useState<string>("");
   const [filterId, setFilterId] = useState<string>(generateRandomId());
   const [companies, setCompanies] = useState<Array<Company>>([]);
 
   const { isLoading, isFetching } = useQuery(
     ["companies", filterId],
-    () => getCompanies({ filters }),
+    () => getCompanies({ filters, searchedCompany }),
     {
       retry: false,
       onSuccess,
@@ -45,13 +46,26 @@ const Filter = (props: Filter) => {
   function onSuccess(res: Array<Company>) {
     setCompanies(res);
   }
-
-  const onFilterListChange: FilterList["onChange"] = (selectedOptions) => {
+  function debounce(fn: Function) {
     filtersDebounce && clearTimeout(filtersDebounce);
     filtersDebounce = setTimeout(() => {
+      fn();
+    }, 500);
+  }
+
+  const onFilterListChange: FilterList["onChange"] = (selectedOptions) => {
+    debounce(() => {
       setFilterId(generateRandomId());
       setFilters((prevFilters) => ({ ...prevFilters, ...selectedOptions }));
-    }, 500);
+    });
+  };
+
+  const onSingleCompanySearch = (e: ChangeEvent<HTMLInputElement>) => {
+    debounce(() => {
+      const company = e.target.value;
+      setSearchedCompany(company);
+      setFilterId(generateRandomId());
+    });
   };
 
   return (
@@ -75,13 +89,19 @@ const Filter = (props: Filter) => {
           <Input
             placeholder="Search for a company"
             iconLeft={<SearchIcon className="w-4 stroke-gray-500" />}
+            onChange={onSingleCompanySearch}
           />
         </div>
 
-        <Button
-          className="hidden md:block md:ml-1"
-          title="Get your dream job"
-        />
+        <a
+          target="__blank"
+          href="https://www.pathrise.com/apply?utm_source=recruiter&utm_medium=content"
+        >
+          <Button
+            className="hidden md:block md:ml-1"
+            title="Get your dream job"
+          />
+        </a>
       </div>
 
       <BorderLoading isLoading={isFetching} className="flex-1 rounded-lg">
@@ -90,15 +110,13 @@ const Filter = (props: Filter) => {
             ? LOADING_ARRAY.map((_, i) => (
                 <CompanyCard key={i} company={{} as Company} isLoading />
               ))
-            : companies
-                .slice(0, 50)
-                .map((c, i) => (
-                  <CompanyCard
-                    key={`${c.name}_${i}`}
-                    onClick={() => push(`/${c.name.toLocaleLowerCase()}`)}
-                    company={c}
-                  />
-                ))}
+            : companies.map((c, i) => (
+                <CompanyCard
+                  key={`${c.name}_${i}`}
+                  onClick={() => push(`/${c.name.toLocaleLowerCase()}`)}
+                  company={c}
+                />
+              ))}
         </div>
       </BorderLoading>
     </div>

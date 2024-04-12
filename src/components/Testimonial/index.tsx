@@ -28,9 +28,9 @@ const Testimonial = (props: Testimonial) => {
           } lg:w-24 lg:h-24`}
         >
           <Image
-            className={`object-cover ${roundedPic ? "rounded-full" : ""}`}
+            className={`object-cover grayscale ${roundedPic ? "rounded-full" : ""}`}
             src={picUrl}
-            alt={"paper plane"}
+            alt={"quote author"}
             fill
             sizes="100% 100%"
           />

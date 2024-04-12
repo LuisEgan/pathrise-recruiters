@@ -3,6 +3,7 @@ import { Company } from "@/utils/types";
 
 interface GetCompanies {
   filters: SelectedFilters;
+  searchedCompany?: string;
 }
 interface ApiGetCompaniesResponse {
   companies: number;
@@ -15,13 +16,16 @@ type SearchFilters = {
 export const getCompanies = async (
   params: GetCompanies
 ): Promise<Array<Company>> => {
-  const { filters: selectedFilters } = params;
+  const { filters: selectedFilters, searchedCompany } = params;
 
   const filters = {} as SearchFilters;
-  Object.keys(selectedFilters).forEach((key) => {
-    const k = key as keyof Company;
-    filters[k] = selectedFilters[k]!.map(({ value }) => `${value}`);
-  });
+
+  if (!searchedCompany) {
+    Object.keys(selectedFilters).forEach((key) => {
+      const k = key as keyof Company;
+      filters[k] = selectedFilters[k]!.map(({ value }) => `${value}`);
+    });
+  }
 
   try {
     const response = (await (
@@ -33,7 +37,7 @@ export const getCompanies = async (
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ filters }),
+          body: JSON.stringify({ filters, searchedCompany }),
         }
       )
     ).json()) as ApiGetCompaniesResponse;

@@ -2,6 +2,7 @@ import { BlockSection } from "@/app/[company]/ContentNavigators/types";
 import { Recruiter } from "./types";
 import { BLOCK_SECTIONS_ANCHORS } from "@/app/[company]/contants";
 
+const LIST_CHARACTER = "•";
 export const capitalizeOnlyFirstLetter = (str = "") =>
   str.charAt(0).toUpperCase() + str.toLocaleLowerCase().slice(1);
 
@@ -55,12 +56,31 @@ export const replaceCompanyPlaceholders = (
   const recruiterEntries = Object.entries(recruiter);
   const updatedRecruiter = {} as Recruiter;
 
+  const COMPANY_PLACEHOLDER = "[COMPANY]";
+  const COMPANY_VALUES_PLACEHOLDER = "[COMPANY_COMPANY_FILTERS_VALUES]";
+  const COMPANY_TRACKS_PROCESSES_AMOUNT_PLACEHOLDER =
+    "[COMPANY_TRACKS_PROCESSES_INTERVIEW_PROCESS_AMOUNT]";
+  const COMPANY_VALUES_FIRST_PLACEHOLDER =
+    "[COMPANY_COMPANY_FILTERS_VALUES_FIRST]";
+  const COMPANY_INTERVIEW_PROCESS_PLACEHOLDER =
+    "[COMPANY_TRACKS_PROCESSES_INTERVIEW_PROCESS]";
+
+  const { interviewProcess = "", values = "" } = recruiter;
+  const valuesList = values.split(LIST_CHARACTER);
+  const tracksProcessesList = interviewProcess.split(LIST_CHARACTER);
+
   recruiterEntries.forEach(([key, value]) => {
     updatedRecruiter[key as keyof Recruiter] = value
-      .replaceAll(`[COMPANY]`, capitalizeOnlyFirstLetter(company))
+      .replaceAll(COMPANY_PLACEHOLDER, company)
+      .replaceAll(COMPANY_VALUES_PLACEHOLDER, addLineBreaks(values))
       .replaceAll(
-        `[COPY FROM COMPANY GUIDE]`,
-        addLineBreaks(recruiter.interviewProcess)
+        COMPANY_TRACKS_PROCESSES_AMOUNT_PLACEHOLDER,
+        tracksProcessesList.length - 1
+      )
+      .replaceAll(COMPANY_VALUES_FIRST_PLACEHOLDER, valuesList[1].trim())
+      .replaceAll(
+        COMPANY_INTERVIEW_PROCESS_PLACEHOLDER,
+        addLineBreaks(interviewProcess)
       );
   });
 
@@ -132,5 +152,5 @@ export const getAnchorSections = (
 };
 
 export const addLineBreaks = (str: string) => {
-  return str.replaceAll("•", "  \n•");
+  return str.replaceAll(LIST_CHARACTER, `  \n${LIST_CHARACTER}`);
 };

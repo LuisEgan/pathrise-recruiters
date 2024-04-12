@@ -53,17 +53,17 @@ const CompanyFooter = (props: CompanyFooter) => {
           </div>
 
           <div className="hidden w-7/12 m-auto mb-10 md:block">
-            <p className="mb-3 text-orange-500 font-bold">
+            <p className="mb-3 text-purple-500 font-bold">
               Here&apos;s what we covered
             </p>
             <ol className="list-decimal">
               <li>What are company recruiters looking for </li>
-              <li>How do you find Apple recruiter email addresses?</li>
+              <li>How do you find {company} recruiter email addresses?</li>
               <li>
                 What recruiters are looking for in terms of company culture?
               </li>
               <li>Personalize the email for your role</li>
-              <li>Apple cold email template</li>
+              <li>{company} cold email template</li>
             </ol>
           </div>
         </div>

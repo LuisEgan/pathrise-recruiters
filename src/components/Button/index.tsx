@@ -14,6 +14,7 @@ interface ButtonProps
   iconRight?: string | React.ReactNode;
   textColorClassName?: string;
   textSizeClassName?: string;
+  hoverClassName?: string;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     className = "",
     textColorClassName = "text-white",
     textSizeClassName = "text-xs lg:text-lg",
+    hoverClassName = "hover:bg-purple-400",
     title,
     icon,
     iconRight,
@@ -31,7 +33,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   } = props;
 
   // Base classes for the button
-  let baseClassNames = `h-10 font-medium select-none text-nowrap text-ellipsis overflow-hidden hover:bg-purple-200`;
+  let baseClassNames = `h-10 font-medium select-none text-nowrap text-ellipsis overflow-hidden ${hoverClassName}`;
   baseClassNames += ` ${textSizeClassName}`;
   const lgClassNames = `lg:px-5 lg:h-12`;
   const xlClassNames = ``;

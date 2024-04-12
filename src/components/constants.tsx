@@ -46,8 +46,7 @@ export const SOCIAL_NETWORKS_DATA: SocialNetworksData = {
   },
 };
 
-export const PATHRISE_VIDEO_URL =
-  "https://www.youtube.com/watch?v=41s3dVdSQhU&ab_channel=Pathrise";
+export const PATHRISE_VIDEO_URL = "https://youtu.be/jH4A5MFSKMs";
 
 export const ROUNDED_CLASSES: SizeStyle = {
   none: "",

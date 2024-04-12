@@ -4,7 +4,7 @@ import SocialNetwork from "@/components/Button/SocialNetwork";
 import Fixed from "@/components/Fixed";
 import { BASE_ANIM, BASE_FADE_IN_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
-import { capitalizeOnlyFirstLetter, getAnchorSections } from "@/utils/strings";
+import { getAnchorSections } from "@/utils/strings";
 import LogoIcon from "@svg/pathrise-logo.svg";
 import LogoPIcon from "@svg/pathrise-p.svg";
 import RocketshipIcon from "@svg/rocketship.svg";
@@ -15,13 +15,11 @@ import AnchorsList from "./AnchorsList";
 import { ContentNavigator } from "./types";
 
 const DesktopNavigator = (props: ContentNavigator) => {
-  const { company, recruiter } = props;
+  const { companyName, recruiter } = props;
   const { width } = useWindowSize();
 
   const IS_SSR = typeof window === "undefined";
   const isMobile = width < 700;
-
-  const companyName = capitalizeOnlyFirstLetter(company.name);
 
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -159,17 +157,13 @@ const DesktopNavigator = (props: ContentNavigator) => {
             >
               <div className="relative z-10 svg-white w-8 h-full mr-2 xl:w-16">
                 <Image
-                  className="absolute object-cover"
-                  src={`/logos/companies/${company.name}.webp`}
+                  className="absolute object-contain"
+                  src={`/logos/companies/${companyName}.webp`}
                   alt={"company logo"}
                   fill
                   sizes="100% 100%"
                 />
               </div>
-
-              <span className="overflow-hidden overflow-ellipsis text-nowrap w-[35%]">
-                {companyName}
-              </span>
             </div>
 
             <div

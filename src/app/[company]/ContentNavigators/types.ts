@@ -1,8 +1,8 @@
 import { BaseProps } from "@/components/types";
-import { Company, Recruiter } from "@/utils/types";
+import { Recruiter } from "@/utils/types";
 
 export interface ContentNavigator extends BaseProps {
-  company: Company;
+  companyName: string;
   recruiter: Recruiter;
 }
 

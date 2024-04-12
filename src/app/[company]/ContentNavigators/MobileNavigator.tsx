@@ -3,17 +3,17 @@
 import Fixed from "@/components/Fixed";
 import { BASE_ANIM } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
-import { capitalizeOnlyFirstLetter } from "@/utils/strings";
+import { getAnchorSections } from "@/utils/strings";
 import ChevronIcon from "@svg/chevron-down.svg";
 import DrawnArrowIcon from "@svg/drawn-arrow.svg";
 import gsap from "gsap";
 import Image from "next/image";
-import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import AnchorsList from "./AnchorsList";
 import { ContentNavigator } from "./types";
 
 const MobileNavigator = (props: ContentNavigator) => {
-  const { company } = props;
+  const { companyName, recruiter } = props;
   const IS_SSR = typeof window === "undefined";
 
   const { width } = useWindowSize();
@@ -27,8 +27,6 @@ const MobileNavigator = (props: ContentNavigator) => {
   const [show, setShow] = useState<boolean>(false);
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
-  const companyName = capitalizeOnlyFirstLetter(company.name);
 
   const onFixChange = useMemo(
     () => (isFixed: boolean) => {
@@ -55,7 +53,7 @@ const MobileNavigator = (props: ContentNavigator) => {
         iconsContainerRef.current,
         {
           borderRadius: "100px",
-          backgroundColor: "orange",
+          backgroundColor: "rgb(64 80 191)",
         },
         "<"
       )
@@ -119,20 +117,17 @@ const MobileNavigator = (props: ContentNavigator) => {
     };
   }, [show]);
 
-  const fixedStyles: CSSProperties = isExpanded ? {} : {};
-
   if (IS_SSR || !show) return null;
 
   return (
     <Fixed
       ref={containerRef}
       onChange={onFixChange}
-      styles={fixedStyles}
       fixWhenOffscreen
       offScreenOffset={{ top: -10 }}
       fixedOffset={{ top: 20 }}
       unfixWhenReturnToOriginalPosition
-      className={`relative flex justify-between p-5 px-7 bg-orange-500 md:hidden`}
+      className={`relative flex justify-between p-5 px-7 bg-purple-500 md:hidden`}
     >
       <div
         className={`no-scrollbar flex items-center w-3/4 h-full ${
@@ -146,19 +141,19 @@ const MobileNavigator = (props: ContentNavigator) => {
             id="list"
             onAnchorClick={toggleExpansion}
             disableAnchors={!isExpanded}
+            sections={getAnchorSections(recruiter)}
           />
         ) : (
           <>
-            <div className="relative w-7 h-7">
+            <div className="relative w-16 h-7">
               <Image
-                className="absolute object-cover"
-                src={"/png/image.png"}
+                className="absolute object-contain"
+                src={`/logos/companies/${companyName}.webp`}
                 alt={"company logo"}
                 fill
                 sizes="100% 100%"
               />
             </div>
-            <span className="text-xs ml-3">{companyName} Guide</span>
           </>
         )}
       </div>

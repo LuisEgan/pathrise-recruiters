@@ -34,6 +34,7 @@ const CompanyCard = (props: CompanyCard) => {
               src={`/logos/companies/${parseLogoName(name)}.webp`}
               alt={name}
               fill
+              sizes="100% 100%"
             />
           )}
         </div>

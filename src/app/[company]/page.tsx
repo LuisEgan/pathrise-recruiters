@@ -10,12 +10,11 @@ import { BLOCK_SECTIONS_ANCHORS } from "./contants";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
-  author: "Felix M.",
-  company: "Delloite",
-  position: "Data Analyst",
-  picUrl: "/png/image.png",
-  quote:
-    "These guides helped me prep for a final round interview with Delloite, so thankful for these!",
+  author: "Niema Majidimehr",
+  company: "Pathrise",
+  position: "Pathrise Recruiting Specialist ",
+  picUrl: "/jpg/Neima.jpeg",
+  quote: "Treat recruiters like human beings if you wish to be noticed",
 };
 
 interface CompanyPage {
@@ -31,6 +30,7 @@ const CompanyPage = async (props: CompanyPage) => {
 
   const recruiter = await getRecruiter({ company });
   const {
+    company: companyOriginalName,
     whatAreRecruitersLookingFor,
     quote,
     isCompanyHiringIn2024,
@@ -49,7 +49,7 @@ const CompanyPage = async (props: CompanyPage) => {
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
-      <CompanyHeader company={{ name: company }} recruiter={recruiter} />
+      <CompanyHeader companyName={companyOriginalName} recruiter={recruiter} />
 
       <section className="grid grid-cols-12">
         <div className="hidden md:block md:col-span-5"></div>
@@ -105,7 +105,7 @@ const CompanyPage = async (props: CompanyPage) => {
         </div>
       </section>
 
-      <CompanyFooter id="company-footer" company={company} />
+      <CompanyFooter id="company-footer" company={companyOriginalName} />
     </main>
   );
 };

@@ -114,21 +114,25 @@ const AnchorsList = (props: AnchorsList) => {
   }, [activeSection]);
 
   const SECTIONS = fullList ? sections : sections.slice(0, PARTIAL_LIST_LENGTH);
-  const className = `flex flex-col overflow-y-auto text-sm ${classNameProp}`;
+  const className = `flex flex-col overflow-y-auto text-sm w-full ${classNameProp}`;
 
   return (
     <div ref={containerRef} className={className}>
       {SECTIONS.map(({ anchorId, title }, index) => (
-        <span
+        <div
           key={title}
-          className={`mb-3 cursor-pointer ${
-            fullList && activeSection === anchorId ? "text-orange-500" : ""
+          className={`mb-3 cursor-pointer w-full mr-3 md:w-[unset] ${
+            fullList && activeSection === anchorId ? "text-purple-200" : ""
+          } ${
+            disableAnchors
+              ? "overflow-x-clip overflow-ellipsis text-nowrap"
+              : ""
           }`}
           data-anchor={anchorId}
           onClick={scrollToSection.bind(null, anchorId)}
         >
           {index + 1}. {title}
-        </span>
+        </div>
       ))}
 
       {!fullList && (
