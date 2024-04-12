@@ -8,8 +8,8 @@ interface CompanyFooter extends BaseProps {
   company: string;
 }
 
-const PathriseDescription = (props: BaseProps) => (
-  <p className={`!leading-7 text-xs mb-10 md:text-lg ${props.className}`}>
+const PathriseDescription = ({ company, className }: CompanyFooter) => (
+  <p className={`!leading-7 text-xs mb-10 md:text-lg ${className}`}>
     <b>
       Pathrise is a career accelerator that helps people land their dream jobs.
     </b>{" "}
@@ -18,10 +18,10 @@ const PathriseDescription = (props: BaseProps) => (
     the inside scoop on interview and company culture in 1-on-1 sessions.
     <br />
     <br />
-    We cant guarantee you a job at a specific company like Apple. But we do
-    guarantee you a great job, if you dont accept an offer in 1 year, you pay
-    nothing. Our income share agreement means you only pay with a percentage of
-    your income at your new role.
+    We can&apos;t guarantee you a job at a specific company like {company}. But
+    we do guarantee you a great job, if you dont accept an offer in 1 year, you
+    pay nothing. Our income share agreement means you only pay with a percentage
+    of your income at your new role.
     <br />
     <br />
     Mentors work with fellows at every stage in search, helping them build the
@@ -49,7 +49,7 @@ const CompanyFooter = (props: CompanyFooter) => {
               Can Pathrise land you a job at <span>{company}</span>?
             </h1>
 
-            <PathriseDescription className="md:hidden" />
+            <PathriseDescription company={company} className="md:hidden" />
           </div>
 
           <div className="hidden w-7/12 m-auto mb-10 md:block">
@@ -74,7 +74,7 @@ const CompanyFooter = (props: CompanyFooter) => {
       </div>
 
       <div className="hidden md:w-[49%] rounded-xl border border-gray-300 bg-gray-200 p-16 mb-10 md:block">
-        <PathriseDescription />
+        <PathriseDescription company={company} />
       </div>
 
       <div className="p-7 bg-purple-500 rounded-lg text-white md:hidden">
