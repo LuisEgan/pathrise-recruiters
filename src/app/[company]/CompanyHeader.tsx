@@ -66,7 +66,7 @@ const CompanyHeader = (props: CompanyHeader) => {
               </div>
             </div>
 
-            <PresentationIcon className="hidden md:block absolute right-0 bottom-0 md:w-1/3 lg:w-1/2 xl:w-1/2" />
+            <PresentationIcon className="hidden md:block absolute right-0 bottom-0 md:w-1/3 lg:w-1/2 xl:w-1/3" />
           </div>
         </div>
       </div>

@@ -66,8 +66,8 @@ export const replaceCompanyPlaceholders = (
     "[COMPANY_TRACKS_PROCESSES_INTERVIEW_PROCESS]";
 
   const { interviewProcess = "", values = "" } = recruiter;
-  const valuesList = values.split(LIST_CHARACTER);
-  const tracksProcessesList = interviewProcess.split(LIST_CHARACTER);
+  const valuesList = values?.split(LIST_CHARACTER);
+  const tracksProcessesList = interviewProcess?.split(LIST_CHARACTER);
 
   recruiterEntries.forEach(([key, value]) => {
     updatedRecruiter[key as keyof Recruiter] = value
@@ -75,9 +75,9 @@ export const replaceCompanyPlaceholders = (
       .replaceAll(COMPANY_VALUES_PLACEHOLDER, addLineBreaks(values))
       .replaceAll(
         COMPANY_TRACKS_PROCESSES_AMOUNT_PLACEHOLDER,
-        tracksProcessesList.length - 1
+        (tracksProcessesList?.length || 1) - 1
       )
-      .replaceAll(COMPANY_VALUES_FIRST_PLACEHOLDER, valuesList[1].trim())
+      .replaceAll(COMPANY_VALUES_FIRST_PLACEHOLDER, valuesList[1]?.trim() || "teamwork")
       .replaceAll(
         COMPANY_INTERVIEW_PROCESS_PLACEHOLDER,
         addLineBreaks(interviewProcess)

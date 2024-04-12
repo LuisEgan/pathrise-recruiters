@@ -7,6 +7,7 @@ import ProTip from "../../components/ProTip";
 import CompanyFooter from "./CompanyFooter";
 import CompanyHeader from "./CompanyHeader";
 import { BLOCK_SECTIONS_ANCHORS } from "./contants";
+import LoadingAnim from "@/components/Loading/LoadingAnim";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
@@ -46,6 +47,8 @@ const CompanyPage = async (props: CompanyPage) => {
     emailTemplate,
     aiColdEmail,
   } = recruiter;
+
+  // return <LoadingAnim />;
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">

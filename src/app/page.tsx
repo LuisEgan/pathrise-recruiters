@@ -43,7 +43,7 @@ export default function Home() {
                 How to get hired according to real recruiters
               </p>
               <p className="text-sm mb-4 lg:text-lg">
-                Learn the best ways we’ve found to get hired by 60+ companies
+                Learn the best ways we’ve found to get hired by 200+ companies
                 and counting.
               </p>
               <a
