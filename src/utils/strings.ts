@@ -77,11 +77,15 @@ export const replaceCompanyPlaceholders = (
         COMPANY_TRACKS_PROCESSES_AMOUNT_PLACEHOLDER,
         (tracksProcessesList?.length || 1) - 1
       )
-      .replaceAll(COMPANY_VALUES_FIRST_PLACEHOLDER, valuesList[1]?.trim() || "teamwork")
+      .replaceAll(
+        COMPANY_VALUES_FIRST_PLACEHOLDER,
+        valuesList[1]?.trim() || "teamwork"
+      )
       .replaceAll(
         COMPANY_INTERVIEW_PROCESS_PLACEHOLDER,
         addLineBreaks(interviewProcess)
-      );
+      )
+      .replaceAll("\\n", "  \n");
   });
 
   return updatedRecruiter;
@@ -151,6 +155,9 @@ export const getAnchorSections = (
   return sections;
 };
 
-export const addLineBreaks = (str: string) => {
+export const addLineBreaks = (
+  str: string,
+  linebreakPlaceholder = LIST_CHARACTER
+) => {
   return str.replaceAll(LIST_CHARACTER, `  \n${LIST_CHARACTER}`);
 };

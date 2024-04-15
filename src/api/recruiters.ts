@@ -16,7 +16,7 @@ export const getRecruiter = async (
   try {
     const response = (await (
       await fetch(
-        "https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters",
+        `https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters?time=${Date.now()}`,
         // "http://localhost:8080/",
         {
           method: "POST",
