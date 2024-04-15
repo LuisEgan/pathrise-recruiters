@@ -10,3 +10,4 @@ export const BASE_FADE_IN_ANIM = {
 };
 
 export const LOGOS_DIR = "./public/logos/companies";
+export const BASE_PATH = "/recruiters";

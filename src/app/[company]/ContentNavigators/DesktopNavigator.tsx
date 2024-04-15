@@ -2,7 +2,7 @@
 
 import SocialNetwork from "@/components/Button/SocialNetwork";
 import Fixed from "@/components/Fixed";
-import { BASE_ANIM, BASE_FADE_IN_ANIM } from "@/utils/constants";
+import { BASE_ANIM, BASE_FADE_IN_ANIM, BASE_PATH } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
 import { getAnchorSections, parseLogoName } from "@/utils/strings";
 import LogoIcon from "@svg/pathrise-logo.svg";
@@ -158,7 +158,7 @@ const DesktopNavigator = (props: ContentNavigator) => {
               <div className="relative z-10 svg-white w-8 h-full mr-2 xl:w-16">
                 <Image
                   className="absolute object-contain"
-                  src={`/logos/companies/${parseLogoName(companyName)}.webp`}
+                  src={`${BASE_PATH}/logos/companies/${parseLogoName(companyName)}.webp`}
                   alt={"company logo"}
                   fill
                   sizes="100% 100%"

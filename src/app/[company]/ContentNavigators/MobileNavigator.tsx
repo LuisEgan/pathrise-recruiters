@@ -1,7 +1,7 @@
 "use client";
 
 import Fixed from "@/components/Fixed";
-import { BASE_ANIM } from "@/utils/constants";
+import { BASE_ANIM, BASE_PATH } from "@/utils/constants";
 import useWindowSize from "@/utils/hooks/useWindowSize";
 import { getAnchorSections, parseLogoName } from "@/utils/strings";
 import ChevronIcon from "@svg/chevron-down.svg";
@@ -148,7 +148,7 @@ const MobileNavigator = (props: ContentNavigator) => {
             <div className="relative w-16 h-7">
               <Image
                 className="absolute object-contain"
-                src={`/logos/companies/${parseLogoName(companyName)}.webp`}
+                src={`${BASE_PATH}/logos/companies/${parseLogoName(companyName)}.webp`}
                 alt={"company logo"}
                 fill
                 sizes="100% 100%"

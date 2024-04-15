@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BaseProps } from "../types";
 import { Company } from "@/utils/types";
 import { parseLogoName } from "@/utils/strings";
+import { BASE_PATH } from "@/utils/constants";
 
 interface CompanyCard extends BaseProps {
   company: Company;
@@ -31,7 +32,7 @@ const CompanyCard = (props: CompanyCard) => {
           {!isLoading && (
             <Image
               className="absolute h-full w-full object-contain"
-              src={`/logos/companies/${parseLogoName(name)}.webp`}
+              src={`${BASE_PATH}/logos/companies/${parseLogoName(name)}.webp`}
               alt={name}
               fill
               sizes="100% 100%"

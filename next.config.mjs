@@ -1,18 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: "/recruiters",
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
         hostname: "**.unsplash.com",
         protocol: "https",
-        port: '',
+        port: "",
       },
       {
         hostname: "**.wixstatic.com",
         protocol: "https",
-        port: '',
-      }
+        port: "",
+      },
     ],
   },
   webpack(config) {

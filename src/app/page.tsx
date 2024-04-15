@@ -10,13 +10,14 @@ import PaperPlaneManIcon from "@svg/characters/character-paper-plane.svg";
 import LogoIcon from "@svg/pathrise-logo.svg";
 import Image from "next/image";
 import VideoHeader from "./VideoHeader";
+import { BASE_PATH } from "@/utils/constants";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
   author: "Felix M.",
   company: "Delloite",
   position: "Data Analyst",
-  picUrl: "/png/Felix.png",
+  picUrl: `${BASE_PATH}/png/Felix.png`,
   quote:
     "These guides helped me prep for a final round interview with Delloite, so thankful for these!",
 };
@@ -86,7 +87,7 @@ export default function Home() {
               <div className="relative w-16 h-16 mr-5 rounded-xl md:rounded-full md:w-10 md:h-10 lg:w-16 lg:h-16">
                 <Image
                   className="object-cover md:rounded-full"
-                  src={"/png/image.png"}
+                  src={`${BASE_PATH}/png/image.png`}
                   alt={"recruiter"}
                   fill
                   sizes="100% 100%"
@@ -154,7 +155,7 @@ export default function Home() {
           <div className="relative hidden rounded-xl left-0 top-0 w-full h-full bg-gray-100 md:absolute md:block">
             <Image
               className="origin-bottom object-cover"
-              src={"/webp/fellows-transparent.webp"}
+              src={`${BASE_PATH}/webp/fellows-transparent.webp`}
               alt={"experts"}
               fill
             />
@@ -163,7 +164,7 @@ export default function Home() {
           <div className="relative flex flex-col justify-center items-center w-full h-72 overflow-hidden md:hidden">
             <Image
               className="origin-bottom blur-[2px] object-cover"
-              src={"/png/fellows-desktop-v3.png"}
+              src={`${BASE_PATH}/png/fellows-desktop-v3.png`}
               alt={"experts"}
               fill
             />
