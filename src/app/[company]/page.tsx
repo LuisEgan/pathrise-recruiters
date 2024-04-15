@@ -7,14 +7,14 @@ import ProTip from "../../components/ProTip";
 import CompanyFooter from "./CompanyFooter";
 import CompanyHeader from "./CompanyHeader";
 import { BLOCK_SECTIONS_ANCHORS } from "./contants";
-import LoadingAnim from "@/components/Loading/LoadingAnim";
+import { BASE_PATH } from "@/utils/constants";
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
   author: "Niema Majidimehr",
   company: "Pathrise",
   position: "Pathrise Recruiting Specialist ",
-  picUrl: "/jpg/Neima.jpeg",
+  picUrl: `${BASE_PATH}/jpg/Neima.jpeg`,
   quote: "Treat recruiters like human beings if you wish to be noticed",
 };
 
