@@ -37,7 +37,7 @@ const Testimonial = (props: Testimonial) => {
         </div>
       </div>
 
-      <div className="flex flex-col text-xxs md:text-xs lg:text-xl">
+      <div className="flex flex-col text-xxs md:text-base lg:text-xl">
         <p className="mb-3">❝{quote}❞</p>
 
         <div className="flex items-center justify-between w-full">
