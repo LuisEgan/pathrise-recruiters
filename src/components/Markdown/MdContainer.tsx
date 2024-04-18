@@ -10,7 +10,7 @@ const MdContainer = (props: MdContainer) => {
   if (!content) return null;
   return (
     <div
-      className={`${className} w-full mb-5 rounded-lg border border-gray-400 bg-gray-200 p-10 md:p-16`}
+      className={`${className} w-full mb-5 rounded-lg border break-words border-gray-400 bg-gray-200 p-10 md:p-16`}
       data-id={dataId}
       {...baseProps}
     >

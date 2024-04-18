@@ -7,6 +7,9 @@ import LogoIcon from "@svg/pathrise-logo.svg";
 import DesktopNavigator from "./ContentNavigators/DesktopNavigator";
 import MobileNavigator from "./ContentNavigators/MobileNavigator";
 import Link from "next/link";
+import Image from "next/image";
+import { BASE_PATH } from "@/utils/constants";
+import { parseLogoName } from "@/utils/strings";
 
 interface CompanyHeader {
   companyName: string;
@@ -18,7 +21,7 @@ const CompanyHeader = (props: CompanyHeader) => {
 
   return (
     <section className="flex flex-col justify-between overflow-hidden w-full h-[70vh] bg-gray-800 text-white rounded-lg mb-10 md:overflow-visible">
-      <div className="h-full flex flex-col">
+      <div className="h-5/6 flex flex-col md:h-full">
         <div className="flex justify-between mb-10 p-5 md:px-10 md:mb-3 xl:p-10">
           <div className="flex items-center text-xs xl:text-lg">
             <Link href="/">
@@ -45,20 +48,32 @@ const CompanyHeader = (props: CompanyHeader) => {
             <h4 className="font-serif mb-3 text-xs xl:text-2xl">
               How to reach out to
             </h4>
-            <h1 className="font-serif font-bold mb-10 text-2xl xl:text-4xl">
+            <h1 className="font-serif font-bold mb-5 text-2xl xl:text-4xl">
               Company Recruiters
             </h1>
+            <div className="relative z-10 h-20 mb-5 w-1/2 bg-white rounded-lg cursor-pointer">
+              <Image
+                className="absolute object-contain"
+                src={`${BASE_PATH}/logos/companies/${parseLogoName(
+                  companyName
+                )}.webp`}
+                alt={"company logo"}
+                fill
+                sizes="100% 100%"
+              />
+            </div>
             <h2 className="mb-10 text-sm md:mb-5 xl:text-xl">
               Learn the best way we&apos;ve found to get hired by {companyName}
             </h2>
 
             {/* +MD ONLY */}
             <div className="hidden md:block">
-              <Button
+              {/* <Button
                 title={`${companyName} Guide`}
                 className="mb-10"
                 iconRight={<DrawnArrowIcon className="w-2 ml-10 xl:w-3" />}
-              />
+              /> */}
+
               <div className="flex">
                 <SocialNetwork className="mr-3" network="share" />
                 <SocialNetwork className="mr-3" network="instagram" />

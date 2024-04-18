@@ -16,6 +16,7 @@ interface Fixed extends BaseProps {
   bottomLimitElementId?: string;
 }
 
+let hasBeenFixed = false;
 const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   const {
     fixWhenOffscreen: fixWhenOffscreenProp = false,
@@ -36,6 +37,7 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
 
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const [originalRect, setOriginalRect] = useState<DOMRect>();
+  const [originalTopDistance, setOriginalTopDistance] = useState<number>(0);
   const [originalParent, setOriginalParent] = useState<Node | null>();
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
@@ -43,7 +45,19 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const alwaysFix = !fixWhenOffscreenProp;
-        const fixWhenOffscreen = fixWhenOffscreenProp && !entry.isIntersecting;
+        let fixWhenOffscreen = fixWhenOffscreenProp && !entry.isIntersecting;
+
+        // * If there's a limit element, don't fix if the scollTop is below it
+        // * this is a check for if the user refreshes the page whilst having scroll past the limit element
+        if (bottomLimitElementId) {
+          const limitElem = document.getElementById(bottomLimitElementId);
+          if (limitElem) {
+            const limitElemTop =
+              limitElem.getBoundingClientRect().top + window.scrollY;
+            fixWhenOffscreen =
+              fixWhenOffscreen && limitElemTop > window.scrollY;
+          }
+        }
 
         if (alwaysFix) {
           setIsFixed(true);
@@ -81,7 +95,7 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     if (!containerRef.current || !originalRect || !fixWhenOffscreenProp) return;
     const top =
       containerRef.current.getBoundingClientRect().top + window.scrollY;
-    const isAboveOriginalPos = top <= originalRect.top;
+    const isAboveOriginalPos = top <= originalTopDistance;
 
     if (isFixed && unfixWhenReturnToOriginalPosition) {
       if (isAboveOriginalPos) {
@@ -97,14 +111,15 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
     if (bottomLimitElementId) {
       const limitElem = document.getElementById(bottomLimitElementId);
       if (!limitElem) return;
+      if (!hasBeenFixed) return;
 
       const { top } = limitElem?.getBoundingClientRect() || { top: Infinity };
-      const isLimitElemInView = top <= window.innerHeight;
+      const hasLimitElemBeenReached = top <= window.innerHeight;
 
       setIsPaused((wasPaused) => {
         if (!containerRef.current) return wasPaused;
 
-        const pause = isLimitElemInView && !wasPaused;
+        const pause = hasLimitElemBeenReached && !wasPaused;
         if (pause) {
           // * Get current position of containerRef
           const { left } = containerRef.current.getBoundingClientRect();
@@ -115,7 +130,7 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
           document.body.appendChild(containerRef.current as Node);
         }
 
-        return isLimitElemInView;
+        return hasLimitElemBeenReached;
       });
     }
   };
@@ -123,7 +138,9 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
   const updateOriginalValues = () => {
     if (containerRef.current) {
       const container = containerRef.current;
-      setOriginalRect(container.getBoundingClientRect());
+      const boundingClient = container.getBoundingClientRect();
+      setOriginalRect(boundingClient);
+      setOriginalTopDistance(boundingClient.top + window.scrollY);
       setOriginalParent(container.parentElement);
     }
   };
@@ -181,6 +198,10 @@ const Fixed = forwardRef<HTMLDivElement, Fixed>((props, ref) => {
       }
     }
   }, [isPaused]);
+
+  useEffect(() => {
+    hasBeenFixed = hasBeenFixed || isFixed;
+  }, [isFixed]);
 
   let dynamicStyles: CSSProperties = { left: 0 };
 

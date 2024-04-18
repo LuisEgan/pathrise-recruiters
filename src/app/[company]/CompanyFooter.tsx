@@ -32,64 +32,71 @@ const PathriseDescription = ({ company, className }: CompanyFooter) => (
 );
 
 const CompanyFooter = (props: CompanyFooter) => {
-  const { company, className, ...baseProps } = props;
+  const { company, className = "", ...baseProps } = props;
 
   return (
     <section
       {...baseProps}
-      className={`${className} flex flex-col md:flex-row md:justify-between`}
+      className={`${className} flex flex-col md:justify-between`}
     >
-      <div
-        className={`flex flex-col justify-between rounded-xl border border-gray-300 bg-gray-200 p-10 mb-10 md:w-[49%] md:p-0`}
-      >
-        <div>
-          <div className="flex flex-col w-full md:flex-row md:p-16">
-            <RocketshipIcon className="w-10 mb-5 md:mr-5" />
-            <h1 className="font-bold mb-5 text-2xl">
-              Can Pathrise land you a job at <span>{company}</span>?
-            </h1>
+      <div className="flex flex-col justify-between md:flex-row">
+        <div
+          className={`flex flex-col justify-between rounded-xl border border-gray-300 bg-gray-200 p-10 mb-10 md:w-[49%] md:p-0`}
+        >
+          <div>
+            <div className="flex flex-col w-full md:flex-row md:p-16">
+              <RocketshipIcon className="w-10 mb-5 md:mr-5" />
+              <h1 className="font-bold mb-5 text-2xl">
+                Can Pathrise land you a job at <span>{company}</span>?
+              </h1>
 
-            <PathriseDescription company={company} className="md:hidden" />
+              <PathriseDescription company={company} className="md:hidden" />
+            </div>
+
+            <div className="hidden w-7/12 m-auto mb-10 md:block">
+              <p className="mb-3 text-purple-500 font-bold">
+                Here&apos;s what we covered
+              </p>
+              <ol className="list-decimal">
+                <li>What are company recruiters looking for </li>
+                <li>How do you find {company} recruiter email addresses?</li>
+                <li>
+                  What recruiters are looking for in terms of company culture?
+                </li>
+                <li>Personalize the email for your role</li>
+                <li>{company} cold email template</li>
+              </ol>
+            </div>
           </div>
 
-          <div className="hidden w-7/12 m-auto mb-10 md:block">
-            <p className="mb-3 text-purple-500 font-bold">
-              Here&apos;s what we covered
-            </p>
-            <ol className="list-decimal">
-              <li>What are company recruiters looking for </li>
-              <li>How do you find {company} recruiter email addresses?</li>
-              <li>
-                What recruiters are looking for in terms of company culture?
-              </li>
-              <li>Personalize the email for your role</li>
-              <li>{company} cold email template</li>
-            </ol>
+          <div className="flex md:justify-end">
+            <ComputerGuyIcon className="w-full md:w-1/3" />
           </div>
         </div>
 
-        <div className="flex md:justify-end">
-          <ComputerGuyIcon className="w-full md:w-1/3" />
+        <div className="hidden md:w-[49%] rounded-xl border border-gray-300 bg-gray-200 p-16 mb-10 md:block">
+          <PathriseDescription company={company} />
         </div>
       </div>
 
-      <div className="hidden md:w-[49%] rounded-xl border border-gray-300 bg-gray-200 p-16 mb-10 md:block">
-        <PathriseDescription company={company} />
-      </div>
-
-      <div className="p-7 bg-purple-500 rounded-lg text-white md:hidden">
-        <h1 className="mb-12">
-          For help landing your dream job at Reddit and other top companies,
-          join Pathrise.
-        </h1>
-        <Button
-          rounded="md"
-          title="Apply today!"
-          textColorClassName="text-black"
-          category="light"
-          className="w-full"
-          iconRight={<PathrisePIcon className="w-4 svg-black" />}
-        />
+      <div className="flex flex-col items-center p-7 bg-purple-500 rounded-lg text-white md:flex-row md:py-12">
+        <div className="flex-1 flex items-center justify-center h-full mb-12">
+          <h1 className="">
+            For help landing your dream job at Reddit and other top companies,
+            join Pathrise.
+          </h1>
+        </div>
+        <div className="flex-1 flex justify-end w-full">
+          <Button
+            rounded="md"
+            textSizeClassName="text-lg"
+            title="Apply today!"
+            textColorClassName="text-black md:text-purple-500"
+            category="light"
+            className="w-full !font-bold md:w-9/12 h-16 md:text-center"
+            iconRight={<PathrisePIcon className="w-4 svg-black md:hidden" />}
+          />
+        </div>
       </div>
     </section>
   );

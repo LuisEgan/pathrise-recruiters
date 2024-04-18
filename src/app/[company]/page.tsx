@@ -48,8 +48,6 @@ const CompanyPage = async (props: CompanyPage) => {
     aiColdEmail,
   } = recruiter;
 
-  // return <LoadingAnim />;
-
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
       <CompanyHeader companyName={companyOriginalName} recruiter={recruiter} />
