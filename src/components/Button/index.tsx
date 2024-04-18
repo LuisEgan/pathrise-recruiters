@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     rounded = "full",
     className = "",
     textColorClassName = "text-white",
-    textSizeClassName = "text-xs lg:text-lg",
+    textSizeClassName = "text-sm lg:text-lg",
     hoverClassName = "hover:bg-purple-400",
     title,
     icon,
@@ -35,6 +35,9 @@ const Button: React.FC<ButtonProps> = (props) => {
   // Base classes for the button
   let baseClassNames = `h-10 font-medium select-none text-nowrap text-ellipsis overflow-hidden ${hoverClassName}`;
   baseClassNames += ` ${textSizeClassName}`;
+  baseClassNames += `${
+    !!iconRight ? "flex justify-between items-center px-5" : "px-2"
+  }`;
   const lgClassNames = `lg:px-5 lg:h-12`;
   const xlClassNames = ``;
 
@@ -65,37 +68,31 @@ const Button: React.FC<ButtonProps> = (props) => {
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     >
-      <div
-        className={`min-w-full lg:px-3 ${
-          !!iconRight ? "flex justify-between items-center px-5" : "px-2"
-        }`}
-      >
-        {icon && typeof icon === "string" ? (
-          <Image
-            src={icon}
-            className="mr-2 xl:w-8"
-            alt="Button Icon"
-            width={20}
-            height={20}
-          />
-        ) : (
-          icon
-        )}
+      {icon && typeof icon === "string" ? (
+        <Image
+          src={icon}
+          className="mr-2 xl:w-8"
+          alt="Button Icon"
+          width={20}
+          height={20}
+        />
+      ) : (
+        icon
+      )}
 
-        <span>{title}</span>
+      <span>{title}</span>
 
-        {iconRight && typeof iconRight === "string" ? (
-          <Image
-            src={iconRight}
-            className="mr-2"
-            alt="Button right Icon"
-            width={20}
-            height={20}
-          />
-        ) : (
-          iconRight
-        )}
-      </div>
+      {iconRight && typeof iconRight === "string" ? (
+        <Image
+          src={iconRight}
+          className="mr-2"
+          alt="Button right Icon"
+          width={20}
+          height={20}
+        />
+      ) : (
+        iconRight
+      )}
     </button>
   );
 };

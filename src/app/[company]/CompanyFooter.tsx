@@ -79,21 +79,21 @@ const CompanyFooter = (props: CompanyFooter) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center p-7 bg-purple-500 rounded-lg text-white md:flex-row md:py-12">
-        <div className="flex-1 flex items-center justify-center h-full mb-12">
+      <div className="flex flex-col items-center p-7 bg-purple-500 rounded-lg text-white md:flex-row md:py-12 md:justify-center">
+        <div className="flex-1 flex items-center justify-center h-full mb-12 md:flex-none md:w-5/12 md:mb-0">
           <h1 className="">
             For help landing your dream job at Reddit and other top companies,
             join Pathrise.
           </h1>
         </div>
-        <div className="flex-1 flex justify-end w-full">
+        <div className="flex-1 flex justify-end w-full md:flex-none md:w-3/12 md:ml-5">
           <Button
             rounded="md"
             textSizeClassName="text-lg"
             title="Apply today!"
             textColorClassName="text-black md:text-purple-500"
             category="light"
-            className="w-full !font-bold md:w-9/12 h-16 md:text-center"
+            className="w-full !font-bold h-16 md:text-center"
             iconRight={<PathrisePIcon className="w-4 svg-black md:hidden" />}
           />
         </div>
