@@ -89,11 +89,11 @@ const CompanyFooter = (props: CompanyFooter) => {
         <div className="flex-1 flex justify-end w-full md:flex-none md:w-3/12 md:ml-5">
           <Button
             rounded="md"
-            textSizeClassName="text-lg"
+            textSizeClassName="text-lg md:text-2xl"
             title="Apply today!"
             textColorClassName="text-black md:text-purple-500"
             category="light"
-            className="w-full !font-bold h-16 md:text-center"
+            className="w-full !font-bold h-16 md:text-center md:!h-20 md:!justify-center"
             iconRight={<PathrisePIcon className="w-4 svg-black md:hidden" />}
           />
         </div>

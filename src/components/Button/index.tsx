@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   let baseClassNames = `h-10 font-medium select-none text-nowrap text-ellipsis overflow-hidden ${hoverClassName}`;
   baseClassNames += ` ${textSizeClassName}`;
   baseClassNames += `${
-    !!iconRight ? "flex justify-between items-center px-5" : "px-2"
+    !!iconRight ? " flex justify-between items-center px-5" : "px-2"
   }`;
   const lgClassNames = `lg:px-5 lg:h-12`;
   const xlClassNames = ``;
