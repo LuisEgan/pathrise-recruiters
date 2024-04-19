@@ -46,13 +46,13 @@ interface CompanyPage {
   };
 }
 
-const CompanyPage = async (props: CompanyPage) => {
+export default async function CompanyPage(props: CompanyPage) {
   const {
     params: { company },
   } = props;
 
-  // const recruiter = await getRecruiter({ company });
-  const recruiter = DUMMY_RECRUITER;
+  const recruiter = (await getRecruiter({ company })).data;
+  // const recruiter = DUMMY_RECRUITER;
   const {
     company: companyOriginalName,
     whatAreRecruitersLookingFor,
@@ -69,7 +69,8 @@ const CompanyPage = async (props: CompanyPage) => {
     howToColdEmail,
     emailTemplate,
     aiColdEmail,
-  } = DUMMY_RECRUITER;
+  } = recruiter;
+  console.log("companyOriginalName: ", companyOriginalName);
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
@@ -132,6 +133,4 @@ const CompanyPage = async (props: CompanyPage) => {
       <CompanyFooter id="company-footer" company={companyOriginalName} />
     </main>
   );
-};
-
-export default CompanyPage;
+}

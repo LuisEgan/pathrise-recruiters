@@ -10,28 +10,27 @@ interface ApiGetRecruiterResponse {
 
 export const getRecruiter = async (
   params: GetRecruiter
-): Promise<Recruiter> => {
+): Promise<ApiGetRecruiterResponse> => {
   const { company } = params;
 
   try {
-    const response = (await (
-      await fetch(
-        `https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters`,
-        // `https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters?time=${Date.now()}`,
-        // "http://localhost:8080/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ company }),
-        }
-      )
-    ).json()) as ApiGetRecruiterResponse;
+    const res = await fetch(
+      `https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters`,
+      // `https://us-west1-pathrise-fellows.cloudfunctions.net/get-recruiters?time=${Date.now()}`,
+      // "http://localhost:8080/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ company }),
+      }
+    );
+    return res.json();
 
-    return replaceCompanyPlaceholders(response.data, response.data.company);
+    // return replaceCompanyPlaceholders(res.data, res.data.company);
   } catch (error) {
     console.error("[getRecruiter] - error: ", error);
-    return {} as Recruiter;
+    return {} as any;
   }
 };
