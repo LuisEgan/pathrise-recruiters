@@ -12,17 +12,17 @@ interface SocialNetworksIcons {
 export const SOCIAL_NETWORKS_ICONS: Array<SocialNetworksIcons> = [
   {
     title: "Facebook",
-    iconPath: "/svg/facebook.svg",
+    iconPath: "/recruiters/svg/facebook.svg",
     link: "https://www.facebook.com/pathriseio/",
   },
   {
     title: "Youtube",
-    iconPath: "/svg/youtube.svg",
+    iconPath: "/recruiters/svg/youtube.svg",
     link: "https://www.youtube.com/channel/UCqYR6Zn-GCe_S5a_D1vBVFw",
   },
   {
     title: "Linkedin",
-    iconPath: "/svg/linkedin.svg",
+    iconPath: "/recruiters/svg/linkedin.svg",
     link: "https://www.linkedin.com/company/pathrise/",
   },
 ];
