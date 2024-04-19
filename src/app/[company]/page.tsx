@@ -50,7 +50,7 @@ const CompanyPage = async (props: CompanyPage) => {
 
   return (
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
-      <CompanyHeader companyName={companyOriginalName} recruiter={recruiter} />
+      {/* <CompanyHeader companyName={companyOriginalName} recruiter={recruiter} /> */}
 
       <section className="grid grid-cols-12">
         <div className="hidden md:block md:col-span-5"></div>
