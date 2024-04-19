@@ -52,7 +52,7 @@ const CompanyPage = async (props: CompanyPage) => {
     <main className="w-full py-5 px-3 bg-gray-100 md:p-7">
       {/* <CompanyHeader companyName={companyOriginalName} recruiter={recruiter} /> */}
 
-      <section className="grid grid-cols-12">
+      {/* <section className="grid grid-cols-12">
         <div className="hidden md:block md:col-span-5"></div>
 
         <div className="flex flex-col col-span-12 md:col-span-7 md:pl-10">
@@ -104,7 +104,7 @@ const CompanyPage = async (props: CompanyPage) => {
             content={aiColdEmail}
           />
         </div>
-      </section>
+      </section> */}
 
       <CompanyFooter id="company-footer" company={companyOriginalName} />
     </main>
