@@ -106,7 +106,7 @@ const CompanyPage = async (props: CompanyPage) => {
         </div>
       </section> */}
 
-      <CompanyFooter id="company-footer" company={companyOriginalName} />
+      {/* <CompanyFooter id="company-footer" company={companyOriginalName} /> */}
     </main>
   );
 };
