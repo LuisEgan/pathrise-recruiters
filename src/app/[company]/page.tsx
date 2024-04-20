@@ -2,34 +2,12 @@ import { getRecruiter } from "@/api/recruiters";
 import Testimonial, {
   Testimonial as TestimonialProps,
 } from "@/components/Testimonial";
+import { BASE_PATH } from "@/utils/constants";
 import MdContainer from "../../components/Markdown/MdContainer";
 import ProTip from "../../components/ProTip";
 import CompanyFooter from "./CompanyFooter";
 import CompanyHeader from "./CompanyHeader";
 import { BLOCK_SECTIONS_ANCHORS } from "./contants";
-import { BASE_PATH } from "@/utils/constants";
-import { Recruiter } from "@/utils/types";
-
-const DUMMY_RECRUITER: Recruiter = {
-  company: "google",
-  whatAreRecruitersLookingFor: "What are recruiters looking for",
-  quote: "quote",
-  isCompanyHiringIn2024: "Is the company hiring in 2024?",
-  typesOfRecruiters: "Types of recruiters",
-  tipOne: "Tip one",
-  whichRecruitersShouldYouContact: "Which recruiters should you contact?",
-  tipTwo: "Tip two",
-  howToFindEmailAddress: "How to find email address",
-  tipThree: "Tip three",
-  companyCulture: "Company culture",
-  tipFour: "Tip four",
-  howToColdEmail: "How to cold email",
-  emailTemplate: "Email template",
-  aiColdEmail: "AI cold email",
-  howToReachOutToRecruiters: "How to reach out to recruiters",
-  interviewProcess: "Interview process",
-  values: "Values",
-};
 
 const TESTIMONIAL_PROPS: TestimonialProps = {
   roundedPic: true,
@@ -51,8 +29,7 @@ export default async function CompanyPage(props: CompanyPage) {
     params: { company },
   } = props;
 
-  const recruiter = (await getRecruiter({ company })).data;
-  // const recruiter = DUMMY_RECRUITER;
+  const recruiter = await getRecruiter({ company });
   const {
     company: companyOriginalName,
     whatAreRecruitersLookingFor,
