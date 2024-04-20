@@ -1,4 +1,4 @@
-import { getRecruiter } from "@/api/recruiters";
+import { getDummy, getRecruiter } from "@/api/recruiters";
 import Testimonial, {
   Testimonial as TestimonialProps,
 } from "@/components/Testimonial";
@@ -28,6 +28,9 @@ export default async function CompanyPage(props: CompanyPage) {
   const {
     params: { company },
   } = props;
+
+  const dummy = await getDummy();
+  console.log("dummy: ", dummy);
 
   const recruiter = await getRecruiter({ company });
   const {

@@ -50,3 +50,8 @@ export async function getRecruiter(params: GetRecruiter): Promise<Recruiter> {
     return {} as Recruiter;
   }
 }
+
+export async function getDummy() {
+  const res = await fetch("https://dummyjson.com/products/1");
+  return res.json();
+}
