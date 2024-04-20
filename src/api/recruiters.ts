@@ -8,7 +8,24 @@ interface ApiGetRecruiterResponse {
   data: Recruiter;
 }
 export async function getRecruiter(params: GetRecruiter): Promise<Recruiter> {
-  if (!document) return {} as Recruiter;
+  const DUMMY_RECRUITER = {
+    company: "GOOGLE",
+    whatAreRecruitersLookingFor: "What are recruiters looking for",
+    quote: "Quote",
+    isCompanyHiringIn2024: "Is company hiring in 2024",
+    typesOfRecruiters: "Types of recruiters",
+    tipOne: "Tip one",
+    whichRecruitersShouldYouContact: "Which recruiters should you contact",
+    tipTwo: "Tip two",
+    howToFindEmailAddress: "How to find email address",
+    tipThree: "Tip three",
+    companyCulture: "Company culture",
+    tipFour: "Tip four",
+    howToColdEmail: "How to cold email",
+    emailTemplate: "Email template",
+    aiColdEmail: "AI cold email",
+  } as Recruiter;
+  return DUMMY_RECRUITER;
 
   const { company } = params;
 
